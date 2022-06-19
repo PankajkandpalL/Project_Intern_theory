@@ -1,0 +1,1178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<style>
+
+*{
+        margin: 0;
+        padding: 0;
+        /* color: whitesmoke; */
+        user-select: none;
+        box-sizing: border-box;
+        font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    }
+    .sidebar{
+        position: fixed;
+        width: 250px;
+        left: -250px;
+        background-color: #fcf9f9;
+        height: 100%;
+        transition: left 0.4s ease;
+    }
+    .sidebar .text{
+        padding-top: 10px;
+        color: rgb(13, 13, 13);
+        font-size: 25px;
+        font-weight: 600;
+        line-height: 65px;
+        text-align: center;
+        background: #f3efef;
+        padding-top: 10px;
+        letter-spacing: 1px;
+    }
+    nav ul{
+        background: #dcd9d9;
+        height: 100%;
+        width: 100%;
+        list-style: none;
+    }
+    nav ul li{
+        line-height: 60px;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    nav ul li a{
+        position: relative;
+        color: rgb(2, 2, 2);
+        text-decoration: none;
+        font-size: 18px;
+        padding-left: 40px;
+        font-weight: 500;
+        display: block;
+        width: 100%;
+        border-left: 3px solid transparent;
+        transition: all 700ms linear;
+    }
+    nav ul li a:hover{
+        color: rgb(52, 55, 55);
+        background: #b9dcde;
+        border-left-color: cyan;
+    }
+    nav ul ul{
+        position: static;
+        display: none;
+    }
+    nav ul .feat-show.show{
+        display: block;
+    }
+    nav ul .serv-show.show1{
+        display: block;
+    }
+    nav ul ul li{
+        line-height: 42px;
+        border-bottom: none;
+    }
+    nav ul ul li a{
+        font-size: 17px;
+        color: #232222;
+        padding-left: 80px;
+    }
+    nav ul li a span{
+        position: absolute;
+        color: rgb(7, 21, 66);
+        top: 48%;
+        right: 20px;
+        font-size: 20px;
+        transform: translateY(-50%);
+        transition: transform 0.4s;
+    }
+    nav ul li a span.rotate{
+        transform: translateY(-50%) rotate(-180deg);
+    }
+    .btn{
+        position: absolute;
+        top: 15px;
+        left: 15px;
+        height: 45px;
+        text-align: center;
+        border-radius: 50%;
+        cursor: pointer;
+        width: 45px;
+        background: #f6f3f3;
+        transition: left 0.4s ease;
+    }
+    .btn:hover{
+        background: #f6f3f3;
+    }
+    .sidebar.show{
+        left: 0px;
+    }
+    .btn.click span:before{
+        content: '\f00d';
+    }
+    .btn.click{
+        left: 260px;
+    }
+    .btn span{
+        color: rgb(0, 0, 0);
+        font-size: 22px;
+        line-height: 45px;
+    }
+    img{
+        height: 40px;
+        width: 100px;
+    }
+    #mainnav{
+        height: 70px;
+        width: 100%;
+        /* border: 1px solid red; */
+        box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+        position: fixed;
+        background-color: white;
+        z-index: 999;
+    }
+    #logo>img{
+        margin-top: 15px;
+        margin-left: 100px;
+        width: 70px;
+    }
+    #btn{
+        position: absolute;
+        right: 40px;
+        top: 15px;
+    }
+    #sign{
+        height: 40px;
+        color: white;
+        border: red;
+        border: 1px solid red;
+        background-color: rgb(224, 17, 17);
+        width: 95px;
+        border-radius: 5px;
+        font-size: 15px;
+    }
+
+    #iclass{
+      top: 15px;
+      position: absolute;
+      right: 170px;
+    }
+    
+#jobDivHeading{
+    font-size: 1.5rem;
+    color: rgba(0, 0, 0, 0.87);
+    font-weight: 500;
+    margin-top: -4px;
+}
+
+#jobPageMainContainer{
+    width: 80%;
+    /* border: 1px solid red; */
+    display: flex;
+    margin: auto;
+    gap: 25px;
+    padding: 20px;
+    padding-top: 30px;
+}
+
+/* Div which contains the image */
+#leftImageDiv{
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    height: fit-content;
+}
+
+/* main Image on job page */
+#leftImageDiv>img{
+    width: 380px;
+    height: 380px;
+}
+
+
+/* Div that contains all the job dic or cards */
+#jobMainContainer{
+
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    overflow-y: scroll;
+    height: 700px;
+    padding: 30px;
+    padding-top: 10px;
+    flex-grow: 1;
+}
+#jobMainContainer::-webkit-scrollbar{
+    width: 15px;
+}
+#jobMainContainer::-webkit-scrollbar-thumb{
+    background:crimson;
+   border-radius: 10px;
+}
+#jobMainContainer::-webkit-scrollbar-track{
+    background: grey;
+    border-radius: 10px;
+}
+
+/* individual div for each job */
+#jobCard{
+
+    /* border: 1px solid black; */
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Div which contains image div and detailsDiv */
+#leftDiv{
+
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    /* border: 1px solid red; */
+    
+
+}
+
+/* Div which contains image */
+#leftDiv>div:nth-child(1){
+    /* border: 1px solid red; */
+    height: fit-content;
+}
+
+
+/* Image */
+#leftDiv>div:nth-child(1)>img{
+    width: 90px;
+    height: 90px;
+}
+
+
+
+/* ALl p tags -except inside salary div */
+#leftDiv>div:nth-child(2)>p{
+    margin-top: -10px;
+    font-size: 14px;
+    color: gray;
+}
+
+/* Role */
+#leftDiv>div:nth-child(2)>h3{
+    font-size:20px ;
+    color: #3C4858;
+    font-weight: 500;
+}
+
+/* Company */
+#leftDiv>div:nth-child(2)>h3+p{
+    color: #3C4858;
+}
+
+
+/*  Salary Div */
+#leftDiv>div:nth-child(2)>div{
+    display: flex;
+    gap: 3px;
+    margin-top:-25px;
+    font-size: 14px;
+    color: gray;
+}
+
+/* Salary */
+#leftDiv>div:nth-child(2)>div>:nth-child(2){
+    color: #3C4858;
+}
+
+
+/* Right div which contaisn share and others */
+#rightDiv{
+    /* border: 1px solid red; */
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-between;
+    padding-right: 5px;
+}
+
+/* Time left */
+#rightDiv>p:nth-child(1){
+    color: #3C4858;
+    font-size: 0.875rem;
+}
+
+
+/* Share logo  */
+#rightDiv>img{
+    height: 24px;
+    width: 24px;
+    opacity: 0.7;
+}
+
+
+/* View and apply text */
+#rightDiv>img+p{
+    color: #087CDD;
+    font-size: 00.875rem;
+    font-weight: 600;
+    padding: 3px;
+
+}
+
+/* line */
+hr{
+    border-top: 2px dashed gray;
+    opacity: 0.5;
+}
+
+#rightDiv>img+p:hover{
+    background-color: #dbe8f3;
+    cursor: pointer;
+    
+}
+
+#rightDiv>img:hover{
+    cursor: pointer;
+}
+select{
+    width:15cm
+  }
+#selectbar{
+    height: 70px;
+    width: 100%;
+    margin-bottom: 40px;
+    /* border: 1px solid grey; */
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+}
+
+#oooo{
+    background-color: black;
+    height:70px;
+}
+
+/*---------------------END OF STYLING OF JOB PAGE----------------------*/
+
+
+
+
+</style>
+<body>
+    <div id="mainnav">
+        <div class="btn">
+            <span class="fas fa-bars"></span>
+        </div>
+        <nav class="sidebar">
+            <div class="text"><img id="internimg" src="https://assets.interntheory.com/creative/logo.png" alt=""></div>
+            <ul>
+                <li>
+                    <a href="index.html">Home</a>
+                </li>
+                <li><a href="internship.html">Internships</a></li>
+                <li><a href="#">Jobs</a></li>
+                <li><a href="#">Post Internships</a></li>
+                <li>
+                    <a href="#" class="feat-btn">Courses
+                        <span class="fas fa-caret-down first"></span>
+                    </a>
+                    <ul class="feat-show">
+                      <li><a href="newonline_course.html">Online Courses</a></li>
+                      <li><a href="newoffline_course.html">Classroom Training</a></li>
+                    </ul>
+                </li>
+                <li><a href="contact.html">Contact Us</a></li>
+                <li>
+                    <a href="#" class="serv-btn">Login
+                        <span class="fas fa-caret-down second"></span>
+                    </a>
+                    <ul class="serv-show">
+                        <li><a href="#">Company</a></li>
+                        <li><a href="#">Student</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+        <div id="logo"><img id="internimg" src="https://assets.interntheory.com/creative/logo.png" alt=""></div>
+        <div id="iclass"><a href="newcart.html"><i class="fa fa-shopping-cart" style="font-size:36px"></i></a></div>
+        <div id="btn">
+            <input type="button"  id="sign" value="SIGN IN">
+        </div>
+    </div>
+
+    <div id="oooo"></div>
+
+
+    <div id="selectbar">
+        <form id="form">
+          <select name="select" id="cities" multiple multiselect-search="true">
+            <option value="" disabled selected hidden>Cities...</option>
+            <option value="">Bangalaore</option>
+            <option value="">Delhi</option>
+            <option value="">Gurgaon</option>
+            <option value="">Mumbai</option>
+            <option value="">Pune</option>
+            <option value="">Hyderabad</option>
+            <option value="">Kolkata</option>
+            <option value="">Ahmedabad</option>
+            <option value="">Kanpur</option>
+            <option value="">Navi Mumbai</option>
+            <option value="">Chandigarh</option>
+            <option value="">Zirakpur</option>
+            <option value="">Thane</option>
+            <option value="">Chennai</option>
+            <option value="">Aizawk</option>
+            <option value="">Indore</option>
+            <option value="">Kashipur</option>
+            <option value="">Greater Noida</option>
+            <option value="">Noida</option>
+            <option value="">Faridabad</option>
+            <option value="">Ludhiana</option>
+            <option value="">Haldwani</option>
+            <option value="">Achabbal</option>
+            <option value="">Jaipur</option>
+        </select>
+        </form>
+        <form id="form1">
+            <select name="select1" id="cities1" multiple multiselect-search="true">
+              <option value="" disabled selected hidden>Type...</option>
+              <option value="">Full Time Internship</option>
+              <option value="">Part Time Internship</option>
+              <option value="">Work From Home Internship</option>
+          </select>
+          </form>
+    </div>
+    
+
+
+
+
+
+    <div id="jobPageMainContainer">
+
+        <div id="leftImageDiv">
+            <img src="https://assets.interntheory.com/creative/Internship_left_course_add_01.png">
+        </div>
+        <div id="jobMainContainer">
+           <h2 id="jobDivHeading">Fresher Job Jobs</h2> 
+
+        </div>
+
+    </div>
+
+
+    
+</body>
+</html>
+
+<script>
+
+
+    $('.btn').click(function(){
+        $(this).toggleClass('click')
+        $('.sidebar').toggleClass('show')
+    })
+    $('.feat-btn').click(function(){
+        $('nav ul .feat-show').toggleClass("show");
+        $('nav ul .first').toggleClass("rotate");
+    })
+    $('.serv-btn').click(function(){
+        $('nav ul .serv-show').toggleClass("show1");
+        $('nav ul .second').toggleClass("rotate");
+    })
+
+  
+
+
+    let jobData=[
+
+    {
+    image:"https://assets.interntheory.com/uploads/company/logos/5e4aa4f62ecc23200708c5cf0d542f7ee1345362.jpg",
+    role:"Digital Marketing",
+    company:"arham labs",
+    category:"Digital Marketing",
+    location:"Mumbai",
+    salary:"50000 - 65000 per month",
+    time:"4 weeks left"
+    
+    },
+    
+    
+    {
+    image:"https://assets.interntheory.com/uploads/company/logos/1b516583445affa5f1659f66a1bb5066ba0409ba.jpg",
+    role:"Admin Executive",
+    company:"WorkWise Solutions Pvt Ltd",
+    category:"Admin",
+    location:"Hyderabad",
+    salary:"21000 per month",
+    time:"1 weeks left"
+    
+    },
+    
+    
+    {
+    image:"https://assets.interntheory.com/uploads/company/logos/5e4aa4f62ecc23200708c5cf0d542f7ee1345362.jpg",
+    role:"Hybrid Mobile App Development",
+    company:"arham labs",
+    category:"App Design And Development",
+    location:"Achabbal",
+    salary:"50000 - 70000 per month",
+    time:"3 weeks left"
+    },
+    
+    {
+    image:"https://assets.interntheory.com/uploads/company/logos/bf3174743fe71c1e3028caabc90044f486d5bc7b.jpg",
+    role:"Strategy Associate",
+    company:"HomeCapital",
+    category:"Business Strategy",
+    location:"Gurgaon",
+    salary:"60000 - 80000 per month",
+    time:"6 weeks left"
+    
+    },
+    
+    {
+    image:"https://assets.interntheory.com/uploads/company/companylogos/eef24376f8ef94fcc6f44e84b4275f006f9f05d4/c1de81e99cb1e58751a9f2db58529a775aba3f5ccom.png",
+    role:"Admin Executive",
+    company:"istituto marangoni",
+    category:"Admin",
+    location:"Mumbai",
+    salary:"40000 - 50000 per month",
+    time:"2 weeks left"
+    
+    },
+    {
+    image:"https://assets.interntheory.com/uploads/company/logos/5e4aa4f62ecc23200708c5cf0d542f7ee1345362.jpg",
+    role:"Digital Marketing",
+    company:"arham labs",
+    category:"Digital Marketing",
+    location:"Mumbai",
+    salary:"50000 - 65000 per month",
+    time:"4 weeks left"
+    
+    },
+    
+    
+    {
+    image:"https://assets.interntheory.com/uploads/company/logos/1b516583445affa5f1659f66a1bb5066ba0409ba.jpg",
+    role:"Admin Executive",
+    company:"WorkWise Solutions Pvt Ltd",
+    category:"Admin",
+    location:"Hyderabad",
+    salary:"21000 per month",
+    time:"1 weeks left"
+    
+    },
+    
+    
+    {
+    image:"https://assets.interntheory.com/uploads/company/logos/5e4aa4f62ecc23200708c5cf0d542f7ee1345362.jpg",
+    role:"Hybrid Mobile App Development",
+    company:"arham labs",
+    category:"App Design And Development",
+    location:"Achabbal",
+    salary:"50000 - 70000 per month",
+    time:"3 weeks left"
+    },
+    
+    {
+    image:"https://assets.interntheory.com/uploads/company/logos/bf3174743fe71c1e3028caabc90044f486d5bc7b.jpg",
+    role:"Strategy Associate",
+    company:"HomeCapital",
+    category:"Business Strategy",
+    location:"Chennai",
+    salary:"60000 - 80000 per month",
+    time:"6 weeks left"
+    
+    },
+    
+    {
+    image:"https://assets.interntheory.com/uploads/company/companylogos/eef24376f8ef94fcc6f44e84b4275f006f9f05d4/c1de81e99cb1e58751a9f2db58529a775aba3f5ccom.png",
+    role:"Admin Executive",
+    company:"istituto marangoni",
+    category:"Admin",
+    location:"Mumbai",
+    salary:"40000 - 50000 per month",
+    time:"2 weeks left"
+    
+    },
+    {
+    image:"https://assets.interntheory.com/uploads/company/logos/5e4aa4f62ecc23200708c5cf0d542f7ee1345362.jpg",
+    role:"Digital Marketing",
+    company:"arham labs",
+    category:"Digital Marketing",
+    location:"Mumbai",
+    salary:"50000 - 65000 per month",
+    time:"4 weeks left"
+    
+    },
+    
+    
+    {
+    image:"https://assets.interntheory.com/uploads/company/logos/1b516583445affa5f1659f66a1bb5066ba0409ba.jpg",
+    role:"Admin Executive",
+    company:"WorkWise Solutions Pvt Ltd",
+    category:"Admin",
+    location:"Chennai",
+    salary:"21000 per month",
+    time:"1 weeks left"
+    
+    },
+    
+    
+    {
+    image:"https://assets.interntheory.com/uploads/company/logos/5e4aa4f62ecc23200708c5cf0d542f7ee1345362.jpg",
+    role:"Hybrid Mobile App Development",
+    company:"arham labs",
+    category:"App Design And Development",
+    location:"Achabbal",
+    salary:"50000 - 70000 per month",
+    time:"3 weeks left"
+    },
+    
+    {
+    image:"https://assets.interntheory.com/uploads/company/logos/bf3174743fe71c1e3028caabc90044f486d5bc7b.jpg",
+    role:"Strategy Associate",
+    company:"HomeCapital",
+    category:"Business Strategy",
+    location:"Chennai",
+    salary:"60000 - 80000 per month",
+    time:"6 weeks left"
+    
+    },
+    
+    {
+    image:"https://assets.interntheory.com/uploads/company/companylogos/eef24376f8ef94fcc6f44e84b4275f006f9f05d4/c1de81e99cb1e58751a9f2db58529a775aba3f5ccom.png",
+    role:"Admin Executive",
+    company:"istituto marangoni",
+    category:"Admin",
+    location:"Mumbai",
+    salary:"40000 - 50000 per month",
+    time:"2 weeks left"
+    
+    },
+    {
+    image:"https://assets.interntheory.com/uploads/company/logos/5e4aa4f62ecc23200708c5cf0d542f7ee1345362.jpg",
+    role:"Hybrid Mobile App Development",
+    company:"arham labs",
+    category:"App Design And Development",
+    location:"Achabbal",
+    salary:"50000 - 70000 per month",
+    time:"3 weeks left"
+    },
+    
+    {
+    image:"https://assets.interntheory.com/uploads/company/logos/bf3174743fe71c1e3028caabc90044f486d5bc7b.jpg",
+    role:"Strategy Associate",
+    company:"HomeCapital",
+    category:"Business Strategy",
+    location:"Gurgaon",
+    salary:"60000 - 80000 per month",
+    time:"6 weeks left"
+    
+    },
+     
+    {
+    image:"https://assets.interntheory.com/uploads/company/logos/1b516583445affa5f1659f66a1bb5066ba0409ba.jpg",
+    role:"Admin Executive",
+    company:"WorkWise Solutions Pvt Ltd",
+    category:"Admin",
+    location:"Chennai",
+    salary:"21000 per month",
+    time:"1 weeks left"
+    
+    },
+    
+     
+    {
+    image:"https://assets.interntheory.com/uploads/company/logos/5e4aa4f62ecc23200708c5cf0d542f7ee1345362.jpg",
+    role:"Admin Executive",
+    company:"WorkWise Solutions Pvt Ltd",
+    category:"Admin",
+    location:"Bangalaore",
+    salary:"21000 per month",
+    time:"1 weeks left"
+    
+    },
+    
+]
+
+for(let z=0;z<jobData.length;z++)
+{
+  if(z%2==0)
+  {
+    jobData[z].desc="Full Time Internship"
+  }
+  else if(z==1)
+  {
+    jobData[z].desc="Part Time Internship";
+  }
+  else if(z%2!==0 && z%3==0 && z%7!=0) 
+  {
+    jobData[z].desc="Part Time Internship,Work From Home Internship"
+  }
+  else if(z%5==0)
+  {
+    jobData[z].desc="Full Time Internship,Part Time Internship,Work From Home Internship"
+  }
+  else if(z%7==0)
+  {
+    jobData[z].desc="Part Time Internship";
+  }
+}
+
+let oppaiimg = document.createElement("img")
+oppaiimg.setAttribute("src", 'https://cdn.dribbble.com/users/2973561/screenshots/5757826/loading__.gif')
+oppaiimg.style.width="100%"
+oppaiimg.style.height="700px"
+document.getElementById("jobMainContainer").append(oppaiimg);
+setTimeout(()=>{
+  displayJob(jobData);
+},4000)
+
+let displayJob= (data) =>{
+
+    document.getElementById("jobMainContainer").innerHTML="";
+
+
+    data.map((elem)=>{
+
+
+        // Creating individual div for each job
+        let jobCard=document.createElement("div")
+        jobCard.setAttribute("id","jobCard")
+        jobCard.style.height="140px"
+        jobCard.style.marginTop="15px"
+        jobCard.style.marginBottom="15px"
+
+
+        // Div that contains image div and details div
+        let leftDiv=document.createElement("div")
+        leftDiv.setAttribute("id","leftDiv")
+
+
+        // Div that contains time share and apply elements
+        let rightDiv=document.createElement("div")
+        rightDiv.setAttribute("id","rightDiv")
+
+
+        // Creating a div and image and adding that image to the div
+        let imageDiv=document.createElement("div")
+        let image=document.createElement("img")
+        image.src=elem.image
+        imageDiv.append(image)
+
+
+        // Creating a div that contains all the details of the job 
+        let detailsDiv=document.createElement("div")
+
+        let role= document.createElement("h3")
+        role.textContent=elem.role
+        role.style.marginBottom="6px"
+        role.style.marginTop="0px"
+
+        let company= document.createElement("p")
+        company.textContent=elem.company
+        company.style.marginBottom="6px"
+        company.style.marginTop="0px"
+
+        let type = document.createElement("p")
+        type.innerText=elem.desc;
+        type.style.marginBottom="6px"
+        type.style.marginTop="0px"
+
+
+        let category= document.createElement("p")
+        category.textContent=elem.category
+        category.style.marginBottom="6px"
+        category.style.marginTop="0px"
+
+        let location= document.createElement("p")
+        location.textContent=elem.location
+        location.style.marginBottom="6px"
+        location.style.marginTop="4px"
+
+        
+        let salaryDiv=document.createElement("div")
+        salaryDiv.style.marginBottom="6px"
+        salaryDiv.style.marginTop="4px"
+
+        let salaryTag=document.createElement("p")
+        salaryTag.innerText="Salary: "
+        
+
+        let Salary=document.createElement("p")
+        Salary.textContent=elem.salary
+        
+
+        salaryDiv.append(salaryTag,Salary)
+
+        detailsDiv.append(role,company,type,category,location,salaryDiv)
+        leftDiv.append(imageDiv,detailsDiv)
+
+
+
+        // Creating time left, share logo , upgrade skills 
+
+        let time=document.createElement("p")
+        time.textContent=elem.time
+
+        let shareLogo=document.createElement("img")
+        shareLogo.src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcVtvhafew1D-bsOucmhBWDr_4WvTW44xRnQ&usqp=CAU"
+
+        let apply=document.createElement("p")
+        apply.textContent="VIEW AND APPLY "
+        apply.addEventListener("click", function(){
+          window.location.href="newonline_course.html";
+        })
+
+
+        rightDiv.append(time,shareLogo,apply)
+
+
+        let line=document.createElement("hr")
+
+
+
+
+
+        jobCard.append(leftDiv,rightDiv)
+        document.getElementById("jobMainContainer").append(jobCard,line)
+    })
+
+
+
+
+}
+
+
+
+
+// ---------------------------------------------------------------------------------------------------------->
+
+
+
+var style = document.createElement('style');
+style.setAttribute("id","multiselect_dropdown_styles");
+style.innerHTML = `
+.multiselect-dropdown{
+  display: inline-block;
+  padding: 2px 5px 0px 5px;
+  border-radius: 4px;
+  border: solid 1px #ced4da;
+  background-color: white;
+  position: relative;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right .75rem center;
+  background-size: 16px 12px;
+}
+.multiselect-dropdown span.optext, .multiselect-dropdown span.placeholder{
+  margin-right:0.5em; 
+  margin-bottom:2px;
+  padding:1px 0; 
+  border-radius: 4px; 
+  display:inline-block;
+}
+.multiselect-dropdown span.optext{
+  background-color:lightgray;
+  padding:1px 0.75em; 
+}
+.multiselect-dropdown span.optext .optdel {
+  float: right;
+  margin: 0 -6px 1px 5px;
+  font-size: 0.7em;
+  margin-top: 2px;
+  cursor: pointer;
+  color: #666;
+}
+.multiselect-dropdown span.optext .optdel:hover { color: #c66;}
+.multiselect-dropdown span.placeholder{
+  color:#ced4da;
+}
+.multiselect-dropdown-list-wrapper{
+  box-shadow: gray 0 3px 8px;
+  z-index: 100;
+  padding:2px;
+  border-radius: 4px;
+  border: solid 1px #ced4da;
+  display: none;
+  margin: -1px;
+  position: absolute;
+  top:0;
+  left: 0;
+  right: 0;
+  background: white;
+}
+.multiselect-dropdown-list-wrapper .multiselect-dropdown-search{
+  margin-bottom:5px;
+}
+.multiselect-dropdown-list{
+  padding:2px;
+  height: 15rem;
+  overflow-y:auto;
+  overflow-x: hidden;
+}
+.multiselect-dropdown-list::-webkit-scrollbar {
+  width: 6px;
+}
+.multiselect-dropdown-list::-webkit-scrollbar-thumb {
+  background-color: #bec4ca;
+  border-radius:3px;
+}
+
+.multiselect-dropdown-list div{
+  padding: 5px;
+}
+.multiselect-dropdown-list input{
+  height: 1.15em;
+  width: 1.15em;
+  margin-right: 0.35em;  
+}
+.multiselect-dropdown-list div.checked{
+}
+.multiselect-dropdown-list div:hover{
+  background-color: #ced4da;
+}
+.multiselect-dropdown span.maxselected {width:100%;}
+.multiselect-dropdown-all-selector {border-bottom:solid 1px #999;}
+`;
+document.head.appendChild(style);
+
+function MultiselectDropdown(options){
+  var config={
+    search:true,
+    height:'15rem',
+    placeholder:'select',
+    txtSelected:'selected',
+    txtAll:'All',
+    txtRemove: 'Remove',
+    txtSearch:'search',
+    ...options
+  };
+  function newEl(tag,attrs){
+    var e=document.createElement(tag);
+    if(attrs!==undefined) Object.keys(attrs).forEach(k=>{
+      if(k==='class') { Array.isArray(attrs[k]) ? attrs[k].forEach(o=>o!==''?e.classList.add(o):0) : (attrs[k]!==''?e.classList.add(attrs[k]):0)}
+      else if(k==='style'){  
+        Object.keys(attrs[k]).forEach(ks=>{
+          e.style[ks]=attrs[k][ks];
+        });
+       }
+      else if(k==='text'){attrs[k]===''?e.innerHTML='&nbsp;':e.innerText=attrs[k]}
+      else e[k]=attrs[k];
+    });
+    return e;
+  }
+
+  
+  document.querySelectorAll("select[multiple]").forEach((el,k)=>{
+    
+    var div=newEl('div',{class:'multiselect-dropdown',style:{width:config.style?.width??el.clientWidth+'px',padding:config.style?.padding??''}});
+    el.style.display='none';
+    el.parentNode.insertBefore(div,el.nextSibling);
+    var listWrap=newEl('div',{class:'multiselect-dropdown-list-wrapper'});
+    var list=newEl('div',{class:'multiselect-dropdown-list',style:{height:config.height}});
+    var search=newEl('input',{class:['multiselect-dropdown-search'].concat([config.searchInput?.class??'form-control']),style:{width:'100%',display:el.attributes['multiselect-search']?.value==='true'?'block':'none'},placeholder:config.txtSearch});
+    listWrap.appendChild(search);
+    div.appendChild(listWrap);
+    listWrap.appendChild(list);
+
+    el.loadOptions=()=>{
+      list.innerHTML='';
+      
+      if(el.attributes['multiselect-select-all']?.value=='true'){
+        var op=newEl('div',{class:'multiselect-dropdown-all-selector'})
+        var ic=newEl('input',{type:'checkbox'});
+        op.appendChild(ic);
+        op.appendChild(newEl('label',{text:config.txtAll}));
+  
+        op.addEventListener('click',()=>{
+          op.classList.toggle('checked');
+          op.querySelector("input").checked=!op.querySelector("input").checked;
+          
+          var ch=op.querySelector("input").checked;
+          list.querySelectorAll(":scope > div:not(.multiselect-dropdown-all-selector)")
+            .forEach(i=>{if(i.style.display!=='none'){i.querySelector("input").checked=ch; i.optEl.selected=ch}});
+  
+          el.dispatchEvent(new Event('change'));
+        });
+        ic.addEventListener('click',(ev)=>{
+          ic.checked=!ic.checked;
+        });
+  
+        list.appendChild(op);
+      }
+
+      Array.from(el.options).map(o=>{
+        var op=newEl('div',{class:o.selected?'checked':'',optEl:o})
+        var ic=newEl('input',{type:'checkbox',checked:o.selected});
+        op.appendChild(ic);
+        op.appendChild(newEl('label',{text:o.text}));
+
+        op.addEventListener('click',()=>{
+          op.classList.toggle('checked');
+          op.querySelector("input").checked=!op.querySelector("input").checked;
+          op.optEl.selected=!!!op.optEl.selected;
+          el.dispatchEvent(new Event('change'));
+        });
+        ic.addEventListener('click',(ev)=>{
+          ic.checked=!ic.checked;
+        });
+        o.listitemEl=op;
+        list.appendChild(op);
+      });
+      div.listEl=listWrap;
+
+      div.refresh=()=>{
+        div.querySelectorAll('span.optext, span.placeholder').forEach(t=>div.removeChild(t));
+        var sels=Array.from(el.selectedOptions);
+        if(sels.length>(el.attributes['multiselect-max-items']?.value??5)){
+          div.appendChild(newEl('span',{class:['optext','maxselected'],text:sels.length+' '+config.txtSelected}));          
+        }
+        else{
+          sels.map(x=>{
+            var c=newEl('span',{class:'optext',text:x.text, srcOption: x});
+            if((el.attributes['multiselect-hide-x']?.value !== 'true'))
+              c.appendChild(newEl('span',{class:'optdel',text:'🗙',title:config.txtRemove, onclick:(ev)=>{c.srcOption.listitemEl.dispatchEvent(new Event('click'));div.refresh();ev.stopPropagation();}}));
+
+            div.appendChild(c);
+          });
+        }
+        if(0==el.selectedOptions.length) div.appendChild(newEl('span',{class:'placeholder',text:el.attributes['placeholder']?.value??config.placeholder}));
+      };
+      div.refresh();
+    }
+    el.loadOptions();
+    
+    search.addEventListener('input',()=>{
+      list.querySelectorAll(":scope div:not(.multiselect-dropdown-all-selector)").forEach(d=>{
+        var txt=d.querySelector("label").innerText.toUpperCase();
+        d.style.display=txt.includes(search.value.toUpperCase())?'block':'none';
+      });
+    });
+
+    div.addEventListener('click',()=>{
+      div.listEl.style.display='block';
+      search.focus();
+      search.select();
+    });
+    
+    document.addEventListener('click', function(event) {
+      if (!div.contains(event.target)) {
+        listWrap.style.display='none';
+        div.refresh();
+      }
+    });    
+  });
+}
+
+window.addEventListener('load',()=>{
+  MultiselectDropdown(window.MultiselectDropdownOptions);
+});
+
+let form = document.querySelector("#form")
+
+document.querySelector("#cities").addEventListener("change", getSelectValues)
+
+  let result = [];
+
+function getSelectValues() {
+  let options = form.cities.options;
+  let opt;
+
+  for (let i=0; i<options.length ; i++) {
+    opt = options[i];
+
+    if (opt.selected) {
+      app(opt.innerText);
+    }
+  }
+
+ 
+}
+
+function app(f){
+
+  // console.log(f)
+
+  if(f!="Cities...")
+  {
+  var filterarr = jobData.filter(function(el){
+    return el.location==f;
+  })
+
+  displayJob(filterarr)
+}
+else{
+    displayJob(jobData)
+}
+
+}
+
+
+let form1 = document.querySelector("#form1")
+
+form1.cities1.addEventListener("change", getSelectValues1)
+
+
+function getSelectValues1() {
+  let result = [];
+  let options = form1.cities1.options;
+  let opt;
+
+  for (let i=0; i<options.length ; i++) {
+    opt = options[i];
+
+    if (opt.selected) {
+      result.push(opt.innerText);
+    }
+  }
+  
+    var s = "";
+    var t="";
+            for(var i=1;i<result.length;i++)
+            {
+                if(i!=result.length-1) s+=result[i]+",";
+                else s+=result[i]
+            }
+    console.log(s)
+
+
+  if(s!="Type")
+  {
+  var filterarr = jobData.filter(function(el){
+    return el.desc==s;
+  })
+
+  displayJob(filterarr)
+}
+else{
+    displayJob(jobData)
+}
+if(result.length==1 && result[0]=="Type...")
+{
+    displayJob(jobData)
+}
+
+}
+
+
+let user = JSON.parse(localStorage.getItem("userdata"));
+
+if(user!=null)
+{
+  document.querySelector("#btn").innerHTML=`<a href="profile.html"><h2>Hi, ${user[0].firstname}</h2></a>`
+}
+else{
+  alert("Please Create an account first")
+}
+
+
+
+
+</script>
