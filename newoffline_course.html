@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<style>
+
+*{
+        margin: 0;
+        padding: 0;
+        /* color: whitesmoke; */
+        user-select: none;
+        box-sizing: border-box;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    }
+    .sidebar{
+        position: fixed;
+        width: 250px;
+        left: -250px;
+        background-color: #fcf9f9;
+        height: 100%;
+        transition: left 0.4s ease;
+    }
+    .sidebar .text{
+        padding-top: 10px;
+        color: rgb(13, 13, 13);
+        font-size: 25px;
+        font-weight: 600;
+        line-height: 65px;
+        text-align: center;
+        background: #f3efef;
+        padding-top: 10px;
+        letter-spacing: 1px;
+    }
+    nav ul{
+        background: #dcd9d9;
+        height: 100%;
+        width: 100%;
+        list-style: none;
+    }
+    nav ul li{
+        line-height: 60px;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    nav ul li a{
+        position: relative;
+        color: rgb(2, 2, 2);
+        text-decoration: none;
+        font-size: 18px;
+        padding-left: 40px;
+        font-weight: 500;
+        display: block;
+        width: 100%;
+        border-left: 3px solid transparent;
+        transition: all 700ms linear;
+    }
+    nav ul li a:hover{
+        color: rgb(52, 55, 55);
+        background: #b9dcde;
+        border-left-color: cyan;
+    }
+    nav ul ul{
+        position: static;
+        display: none;
+    }
+    nav ul .feat-show.show{
+        display: block;
+    }
+    nav ul .serv-show.show1{
+        display: block;
+    }
+    nav ul ul li{
+        line-height: 42px;
+        border-bottom: none;
+    }
+    nav ul ul li a{
+        font-size: 17px;
+        color: #232222;
+        padding-left: 80px;
+    }
+    nav ul li a span{
+        position: absolute;
+        color: rgb(7, 21, 66);
+        top: 48%;
+        right: 20px;
+        font-size: 20px;
+        transform: translateY(-50%);
+        transition: transform 0.4s;
+    }
+    nav ul li a span.rotate{
+        transform: translateY(-50%) rotate(-180deg);
+    }
+    .btn{
+        position: absolute;
+        top: 15px;
+        left: 15px;
+        height: 45px;
+        text-align: center;
+        border-radius: 50%;
+        cursor: pointer;
+        width: 45px;
+        background: #f6f3f3;
+        transition: left 0.4s ease;
+    }
+    .btn:hover{
+        background: #f6f3f3;
+    }
+    .sidebar.show{
+        left: 0px;
+    }
+    .btn.click span:before{
+        content: '\f00d';
+    }
+    .btn.click{
+        left: 260px;
+    }
+    .btn span{
+        color: rgb(0, 0, 0);
+        font-size: 22px;
+        line-height: 45px;
+    }
+    img{
+        height: 40px;
+        width: 100px;
+    }
+    #mainnav{
+        height: 70px;
+        width: 100%;
+        /* border: 1px solid red; */
+        box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+        position: fixed;
+        background-color: white;
+        z-index: 999;
+    }
+    #logo>img{
+        margin-top: 15px;
+        margin-left: 100px;
+        width: 70px;
+    }
+    #btn{
+        position: absolute;
+        right: 40px;
+        top: 15px;
+    }
+    #sign{
+        height: 40px;
+        color: white;
+        border: red;
+        border: 1px solid red;
+        background-color: rgb(224, 17, 17);
+        width: 95px;
+        border-radius: 5px;
+        font-size: 15px;
+    }
+
+    #iclass{
+      top: 15px;
+      position: absolute;
+      right: 170px;
+    }
+
+
+
+    section{
+    display: grid;
+    width: 79%;
+    margin: auto;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: auto;
+    gap: 20px;
+  }
+  img {
+    width: 100%;
+  }
+  section>div{
+      /* width: 50px; */
+      box-shadow: 0px 1px 3px 0px rgb(0 0 0 / 20%),0px 1px 1px 0px rgb(0 0 0 / 14%),0px 2px 1px -1px rgb(0 0 0 / 12%);      
+      border-radius: 5px;
+    }
+    #Course_details{
+        margin-top: 0px;
+        padding: 16px;
+        padding-top: 0px;
+        flex-grow: 0;
+        max-width: 100%;
+        flex-basis: 100%;
+        border-bottom: 0.5px dashed rgb(170, 170, 170);
+    }
+    #Course_details>h2{
+        font-size: 15px ;
+        font-weight: 700;
+        font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    }
+    #Course_details>p{
+        color: rgba(0, 0, 0, 0.54);
+        font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+        font-size: 14.3px;
+        margin-top: 0px;
+        margin-bottom: 0px;
+   }
+    #price_details{
+        text-align: right;
+        margin: 0px;
+        padding: 5px;
+    }
+    #price_details>p{
+        display: inline-block;
+        font-size: 15px;
+        text-decoration: line-through;
+        color: rgba(0, 0, 0, 0.54);
+        margin: 3px;
+    }
+    #price_details>h5{
+        display: inline-block;
+        font-size:17px;
+        margin: 3px;
+    }
+    #price_details>button{
+        background-color: white;
+        color: rgb(255, 179, 38);
+        font-weight: bold;
+        font-size: 15px;
+        border: none;
+    }
+    #Functionality{
+        text-align: right;
+        padding: 5px;
+    }
+    #Functionality>a{
+        padding: 4px 8px;
+        font-size: 13px;
+        color: #087CDD;
+        font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+        font-weight: bold;
+        vertical-align: middle;
+    }
+    #Functionality>button{
+        padding: 4px 8px;
+        font-size: 13px;
+        font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+        background-color: red;
+        color: white;
+        border: none;
+        border-radius: 3px;
+        padding: 5px;
+    }
+    #a{
+      text-decoration: none;
+    }
+  img{
+      width: 100%;
+      height: 140px;
+  }
+  h1{
+      text-align: center;
+  }
+
+  #hero-image {
+    /* border: 1px solid red; */
+    background-image: url("https://assets.interntheory.com/creative/courses/listpage/Course-bannerbg.jpg"); /* The image used */
+    background-color: #cccccc; /* Used if the image is unavailable */
+    height: 195px; /* You must set a specified height */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover; /* Resize the background image to cover the entire container */
+  }
+  #hero-image>div{
+    width: 78%;
+    height: 190px;
+    margin: auto;
+    margin-top: 10px;
+    /* align-items: center; */
+  }
+  #hero-image>div>img{
+    height: 100%;
+  }
+
+  #writings{
+    width: 79%;
+    margin: auto;
+    margin-top: 25px;
+    margin-bottom: 20px;
+  }
+  #writings>h3{
+    color: rgba(0, 0, 0, 0.54);
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    font-weight: 400;
+  }
+  #writings>p{
+    color: rgba(0, 0, 0, 0.54);
+    font-size: 14px;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    font-weight: 400;
+    line-height: 1.75;
+  }
+  @media all and (min-width: 451px) and (max-width: 750px){
+    section{
+    width: 80%;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    grid-template-rows:auto ;
+    /* grid-template-areas: 
+    "a b c d"; */
+    margin: auto;
+    }
+}
+
+#internimg{
+    height: 40px;
+}
+
+</style>
+<body>
+    <div id="mainnav">
+        <div class="btn">
+            <span class="fas fa-bars"></span>
+        </div>
+        <nav class="sidebar">
+            <div class="text"><img id="internimg" style="width: 30%;" src="https://assets.interntheory.com/creative/logo.png" alt=""></div>
+            <ul>
+                <li>
+                    <a href="index.html">Home</a>
+                </li>
+                <li><a href="internship.html">Internships</a></li>
+                <li><a href="job.html">Jobs</a></li>
+                <li><a href="#">Post Internships</a></li>
+                <li>
+                    <a href="#" class="feat-btn">Courses
+                        <span class="fas fa-caret-down first"></span>
+                    </a>
+                    <ul class="feat-show">
+                        <li><a href="newonline_course.html">Online Courses</a></li>
+                        <li><a href="newoffline_course.html">Classroom Training</a></li>
+                    </ul>
+                </li>
+                <li><a href="contact.html">Contact Us</a></li>
+                <li>
+                    <a href="#" class="serv-btn">Login
+                        <span class="fas fa-caret-down second"></span>
+                    </a>
+                    <ul class="serv-show">
+                        <li><a href="#">Company</a></li>
+                        <li><a href="#">Student</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+        <div id="logo"><img id="internimg" src="https://assets.interntheory.com/creative/logo.png" alt=""></div>
+        <div id="iclass"><a href="cart.html"><i class="fa fa-shopping-cart" style="font-size:36px"></i></a></div>
+        <div id="btn">
+            <input type="button"  id="sign" value="SIGN IN">
+        </div>
+    </div>
+    <div id="hero-image" style="padding-top: 15px;">
+        <div><img src="https://assets.interntheory.com/creative/courses/listpage/Course-banner1.png" alt=""></div>
+    </div>
+    <div id="writings">
+        <h3>Certified Offline Courses</h3>
+        <p>Intern Theory launches certified classroom training for select courses in Mumbai. If you are from another city and wish to join our courses, please whatsapp us on 9892041244</p>
+    </div>
+    <section>
+        
+    </section>
+    
+</body>
+</html>
+
+<script type="module">
+    $('.btn').click(function(){
+        $(this).toggleClass('click')
+        $('.sidebar').toggleClass('show')
+    })
+    $('.feat-btn').click(function(){
+        $('nav ul .feat-show').toggleClass("show");
+        $('nav ul .first').toggleClass("rotate");
+    })
+    $('.serv-btn').click(function(){
+        $('nav ul .serv-show').toggleClass("show1");
+        $('nav ul .second').toggleClass("rotate");
+    })
+
+
+    let Data = [
+    {
+        image:"https://assets.interntheory.com/courses/banner/1573118304.png",
+        name:"Offline Digital Marketing Course",
+        description:"Learn the art of digital marketing. Sign up for this offline ...",
+        dicount:"19999",
+        price:"9999",
+        EMI:"EMI starting at ₹ 572/month"
+    },
+    {
+        image:"https://assets.interntheory.com/courses/banner/1573120159.png",
+        name:"Digital Marketing Course",
+        description:"Learn the art of digital marketing. Sign up for this online ...",
+        dicount:"19999",
+        price:"9999",
+        EMI:"EMI starting at ₹ 572/month"
+    },
+    {
+        image:"https://assets.interntheory.com/courses/banner/1573120767.png",
+        name:"Offline Tally + GST Cours",
+        description:"Sign up for this offline tally and GST course and learn how ...",
+        dicount:"15999",
+        price:"7999",
+        EMI:"EMI starting at ₹ 458/month"
+    },
+    {
+        image:"https://assets.interntheory.com/courses/banner/1573120508.png",
+        name:"Offline Advanced Excel Course",
+        description:"Master MS Excel. Take the offline ms excel course and learn ...",
+        dicount:"19999",
+        price:"5999",
+        EMI:"EMI starting at ₹ 343/month"
+    },
+];
+
+    import { display } from "./components/common_course.js"
+    display(Data)
+
+
+
+
+
+</script>
