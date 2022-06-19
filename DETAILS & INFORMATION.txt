@@ -4,7 +4,7 @@ Soumya Subrat Moharana - IA
 
 Arijit Bhatta	fp03_226	Courses
 Aman Kumar		fw18_0801	Login, register, Contactus and forget password
-Surya Moharana	fp03_265	Internship
+Surya Moharana	fp03_265	Internship, Course
 Avinash Kumar	fw17_0534	Jobs
 Nitesh Samaniya	fw18_0433	Login, register, Contactus and forget password
 Pankaj Kandpal	fw18_0523	Home Page
