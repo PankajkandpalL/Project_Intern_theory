@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style/change.css">
+</head>
+<body>
+    <div id="main">
+        <div id="box">
+         <h2 id="fpassword">Change password</h2>
+        <div id="emaai">
+            <div class="field">
+                <input type="text" name="pass1" id="pass1" placeholder="Create Password">
+                <label for="pass1">Create</label>
+              </div>
+            </div>
+            <div id="emaai">
+                <div class="field">
+                    <input type="password" name="pass2" id="pass2" placeholder="Confirm Password">
+                    <label for="pass2">Confirm</label>
+                  </div>
+                </div>
+            <button id="butt" onclick="changep()">Submit</button>
+        </div>
+
+    </div>
+</body>
+</html>
+<script>
+    let idhar=JSON.parse(localStorage.getItem("userdata"));
+    let changep=()=>{
+    let call=document.getElementById("pass2").value
+    idhar[0].password=call;
+    localStorage.setItem("userdata",JSON.stringify(idhar));
+    let low=()=>{
+        window.location.href="loggin.html"
+    }
+    setTimeout(low,1000);
+    
+    }
+    
+</script>
