@@ -1,0 +1,136 @@
+body{
+    background-image: url("https://assets.interntheory.com/creative/Web-Banner.jpg");
+}
+#main{
+    width:31%;
+    margin: auto;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    padding: 10px 0px 10px 0px;
+    background-color: white;
+    position: relative;
+    margin-top: 200px;
+}
+#box{
+    width: 90%;
+    margin: auto;
+    /* border: 1px solid; */
+    /* height: 400px; */
+}
+#fpassword{
+    color: rgba(0, 0, 0, 0.87);
+    font-size: 1.5rem;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    font-weight: 400;
+    line-height: 1.33;
+    letter-spacing: 0em;
+    margin-bottom: 0px;
+}
+#fpassword+p{
+    color: #3C4858;
+    font-size: 1rem;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    font-weight: 400;
+    line-height: 1.5;
+    letter-spacing: 0.00938em;
+    margin-top: 2px;
+}
+
+
+
+
+
+
+.field {
+    display: flex;
+    flex-flow: column-reverse;
+    margin-bottom: 15px;
+    margin-bottom: 0px;
+    
+  }
+  label, input {
+    transition: all 0.2s;
+    touch-action: manipulation;
+    /* margin: auto; */
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  }
+  
+  input {
+    font-size: 1.5em;
+    border: 0;
+    border-bottom: 1px solid #ccc;
+    font-family: inherit;
+    -webkit-appearance: none;
+    border-radius: 0;
+    padding: 0;
+    cursor: text;
+    font-size: 15px;
+    margin-bottom: 15px;
+    /* width: 80%; */
+  }
+  
+  input:focus {
+    outline: 0;
+    border-bottom: 1px solid #666;
+  }
+  
+  label {
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: 11px;
+    /* margin-bottom: 5px; */
+  }
+  input:placeholder-shown + label {
+    cursor: text;
+    max-width: 55.66%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transform-origin: left bottom;
+    transform: translate(0, 2.125rem) scale(1.5);
+    margin-bottom: 15px;
+    
+  }
+  ::-webkit-input-placeholder {
+    opacity: 0;
+    transition: inherit;
+  }
+ 
+  input:focus::-webkit-input-placeholder {
+    opacity: 1;
+  }
+  input:not(:placeholder-shown) + label,
+  input:focus + label {
+    transform: translate(0, 0) scale(1);
+    cursor: pointer;
+  }
+  #butt{
+    display: block;
+    font-size: 18px;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    width: 90%;
+    margin: auto;
+    background-color: white;
+    color: red;
+    border: 1px solid red;
+    padding: 8px 5px 8px 5px;
+    margin-bottom: 30px;
+    cursor: pointer;
+  }
+
+  #image-b{
+    width: 50px;
+    position: absolute;
+    left: -30px;
+    cursor: pointer;
+    transition: transform 200ms linear;
+  }
+  #image-b:hover{
+    transform: scale(1.2);
+    left: -35px;
+  }
+  #fo>img{
+    width: 60%;
+    height: 50px;
+    margin-left: 85px;
+
+  }
