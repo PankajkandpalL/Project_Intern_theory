@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <style>
+        *{
+    margin: 0%;
+    padding: 0%;
+        user-select: none;
+        box-sizing: border-box;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+.sidebar{
+        position: fixed;
+        width: 250px;
+        left: -250px;
+        background-color: #fcf9f9;
+        height: 100%;
+        transition: left 0.4s ease;
+    }
+    .sidebar .text{
+        padding-top: 10px;
+        color: rgb(13, 13, 13);
+        font-size: 25px;
+        font-weight: 600;
+        line-height: 65px;
+        text-align: center;
+        background: #f3efef;
+        padding-top: 10px;
+        letter-spacing: 1px;
+    }
+    nav ul{
+        background: #dcd9d9;
+        height: 100%;
+        width: 100%;
+        list-style: none;
+    }
+    nav ul li{
+        line-height: 60px;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    nav ul li a{
+        position: relative;
+        color: rgb(2, 2, 2);
+        text-decoration: none;
+        font-size: 18px;
+        padding-left: 40px;
+        font-weight: 500;
+        display: block;
+        width: 100%;
+        border-left: 3px solid transparent;
+        transition: all 700ms linear;
+    }
+    nav ul li a:hover{
+        color: rgb(52, 55, 55);
+        background: #b9dcde;
+        border-left-color: cyan;
+    }
+    nav ul ul{
+        position: static;
+        display: none;
+    }
+    nav ul .feat-show.show{
+        display: block;
+    }
+    nav ul .serv-show.show1{
+        display: block;
+    }
+    nav ul ul li{
+        line-height: 42px;
+        border-bottom: none;
+    }
+    nav ul ul li a{
+        font-size: 17px;
+        color: #232222;
+        padding-left: 80px;
+    }
+    nav ul li a span{
+        position: absolute;
+        color: rgb(7, 21, 66);
+        top: 48%;
+        right: 20px;
+        font-size: 20px;
+        transform: translateY(-50%);
+        transition: transform 0.4s;
+    }
+    nav ul li a span.rotate{
+        transform: translateY(-50%) rotate(-180deg);
+    }
+    .btn{
+        position: absolute;
+        top: 15px;
+        left: 15px;
+        height: 45px;
+        text-align: center;
+        border-radius: 50%;
+        cursor: pointer;
+        width: 45px;
+        background: white;
+        transition: left 0.4s ease;
+    }
+    .btn:hover{
+        background: #f6f3f3;
+    }
+    .sidebar.show{
+        left: 0px;
+    }
+    .btn.click span:before{
+        content: '\f00d';
+    }
+    .btn.click{
+        left: 260px;
+    }
+    .btn span{
+        color: rgb(0, 0, 0);
+        font-size: 22px;
+        line-height: 45px;
+    }
+    img{
+        height: 40px;
+        width: 100px;
+    }
+    #mainnav{
+        height: 70px;
+        width: 100%;
+        /* border: 1px solid red; */
+        box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+        position: fixed;
+        background-color: white;
+        z-index: 999;
+    }
+    #logo>img{
+        margin-top: 15px;
+        margin-left: 100px;
+        width: 70px;
+    }
+    #btn{
+        position: absolute;
+        right: 40px;
+        top: 15px;
+    }
+    #sign{
+        height: 40px;
+        color: white;
+        border: red;
+        border: 1px solid red;
+        background-color: rgb(224, 17, 17);
+        width: 95px;
+        border-radius: 5px;
+        font-size: 15px;
+    }
+
+    #iclass{
+      top: 15px;
+      position: absolute;
+      right: 170px;
+    }
+#navbar{
+    width: 100%;
+    height: 0.5px;
+    background-color: rgb(255, 255, 255);
+}
+
+#container{
+    width: 80%;
+    /* height: 600px; */
+    height: auto;
+    margin: auto;
+    margin-top: 80px;
+    /* border: 1px solid red; */
+    display: flex;
+}
+#contact_first_half{
+    width: 48%;
+    /* height: 580px; */
+    height: auto;
+    /* border: 1px solid green; */
+}
+#contact_second_half{
+    width: 48%;
+    height: 460px;
+    /* border: 1px solid blue; */
+    margin-left: 40px;
+}
+
+#contact_first_half h3{
+    color: rgba(0, 0, 0, 0.87);
+    font-size: 3rem;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    font-weight: 400;
+    line-height: 1.04;
+    letter-spacing: 0em;
+
+    margin: 0;
+    display: block;
+    overflow-wrap: break-word;
+}
+
+#contact_first_half p{
+    color: #3C4858;
+    font-size: 1rem;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    font-weight: 400;
+    line-height: 1.5;
+    letter-spacing: 0.00938em;
+
+    margin: 0;
+    display: block;
+    overflow-wrap: break-word;
+}
+
+#contact_form input{
+        border: none; 
+        border-bottom: 1px solid gray;
+        font-size: 18px;
+        width: 100%;
+        margin-top: 25px;
+        padding: 6px;
+        box-sizing: border-box;
+        font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+
+}
+#contact_form{
+    text-align: center;
+}
+
+#contact_form button{
+    background-color: red;
+    border: none;
+    color: white;
+    margin-top: 30px;
+    font-size: 15px;
+    font-weight: 500;
+
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+    border-radius: 5px;
+    cursor: pointer;
+}
+#contact_form button:hover{
+    opacity: 0.7;
+}
+
+
+#contact_social_media{
+    width: 31%;
+    margin: auto;
+    margin-top: 70px;
+    /* border: 1px solid red; */
+    display: flex;
+        justify-content: space-evenly;
+}
+#contact_social_media span{
+    margin-right: 6px;
+}
+#contact_social_media span img{
+    width: 30px;
+    height: 30px;
+}
+
+#contact_or{
+    width: 25px;
+    margin: auto;
+    color: #3C4858;
+    font-size: 16px;
+    font-weight: 400;
+
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    /* border: 1px solid red; */
+}
+
+#contact_call{
+    width: 28%;
+    margin: auto;
+    color: #3C4858;
+    font-size: 0.875rem;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    font-weight: 400;
+    line-height: 1.5;
+    letter-spacing: 0.01071em;
+    /* border: 1px solid red; */
+}
+
+#contact_img{
+    /* border: 10px solid red; */
+    width: 100%;
+    height: 460px;
+}
+
+
+@media only screen and (max-width: 1200px){
+    #contact_social_media{
+        width: 38%;
+        display: flex;
+        justify-content: space-evenly;
+    }
+    #contact_call{
+        width: 40%;
+    }
+    #contact_second_half{
+        margin-left: 20px;
+    }
+    #contact_second_half{
+        width: 50%;
+    }
+}
+
+@media only screen and (max-width: 992px){
+    #contact_social_media{
+        width: 42%;
+        margin-top: 50px;
+    }
+    #contact_call{
+        width: 40%;
+    }
+    
+}
+
+@media only screen and (max-width: 768px){
+    #container{
+        flex-wrap: wrap;
+    }
+    #contact_first_half{
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    #contact_img{
+        height: 400px;
+    }
+    #contact_call{
+        width: 30%;
+    }
+}
+
+@media only screen and (max-width: 600px){
+    #container{
+        flex-wrap: wrap;
+    }
+    #contact_first_half{
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    #contact_img{
+        height: 450px;
+    }
+    #contact_call{
+        display: none;
+    }
+    #contact_or{
+        display: none;
+    }
+    #contact_social_media{
+        width: 45%;
+    }
+    #contact_second_half{
+        width: 68%;
+        margin-left: 0%;
+    }
+}
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+    #contact_first_half p{
+        font-size: 1.2rem;
+    }
+    #container{
+        flex-wrap: wrap;
+    }
+    #contact_first_half{
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    #contact_img{
+        height: 300px;
+    }
+    #contact_call{
+        display: none;
+    }
+    #contact_or{
+        display: none;
+    }
+    #contact_social_media{
+        width: 65%;
+    }
+    #contact_second_half{
+        width: 95%;
+        margin-left: 0%;
+    }
+    #contact_form input{
+        margin-top: 30px;
+    }
+  }
+
+    </style>
+</head>
+<body>
+    <div id="navbar"></div> 
+    <div id="mainnav">
+    <div class="btn">
+        <span class="fas fa-bars"></span>
+    </div>
+    <nav class="sidebar">
+        <div class="text"><img id="internimg" src="https://assets.interntheory.com/creative/logo.png" alt=""></div>
+        <ul>
+            <li>
+                <a href="index.html">Home</a>
+            </li>
+            <li><a href="internship.html">Internships</a></li>
+            <li><a href="job.html">Jobs</a></li>
+            <li><a href="#">Post Internships</a></li>
+            <li>
+                <a href="#" class="feat-btn">Courses
+                    <span class="fas fa-caret-down first"></span>
+                </a>
+                <ul class="feat-show">
+                    <li><a href="newonline_course.html">Online Courses</a></li>
+                    <li><a href="newoffline_course.html">Classroom Training</a></li>
+                </ul>
+            </li>
+            <li><a href="#">Contact Us</a></li>
+            <li>
+                <a href="#" class="serv-btn">Login
+                    <span class="fas fa-caret-down second"></span>
+                </a>
+                <ul class="serv-show">
+                    <li><a href="signupp.html">Company</a></li>
+                    <li><a href="signupp.html">Student</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+    <div id="logo"><img id="internimg" src="https://assets.interntheory.com/creative/logo.png" alt=""></div>
+    <div id="iclass"><i class="fa fa-shopping-cart" style="font-size:36px"></i></div>
+    <div id="btn">
+        <input type="button"  id="sign" value="SIGN IN">
+    </div>
+</div>
+    <div id="container">
+        <div id="contact_first_half">
+            <h3>Contact</h3>
+            <p>Have something to say? Give us a holler through any one of the ways below, and we’ll get back within 24 hours. 
+                On a side note, like the rest around us, we have fallen victims to Social Media. Feel free to get in touch on Facebook, 
+                LinkedIn or Instagram anytime!
+            </p>
+            <form id="contact_form">
+                <input id="contact_emeil" type="email" placeholder="Email Address">
+                <input id="contact_mobile" type="number" placeholder="Mobile No.">
+                <input id="contact_subject" type="text" placeholder="Subject">
+                <input id="contact_message" type="text" placeholder="Message">
+                <button type="submit">SUBMIT</button>
+            </form>
+
+            <div id="contact_social_media">
+                <span><a href="https://www.facebook.com/interntheory" target="_blank"><img src="./images/logo-facebook-facebook-logo-transparent-png-pictures-icons-and-0.png"></a></span>
+                <span><a href="https://twitter.com/InternTheory" target="_blank"><img src="./images/twitter-logo-vector-png-clipart-1.png"></a></span>
+                <span><a href="https://www.instagram.com/interntheory/" target="_blank"><img src="./images/logo-ig-stunning-instagram-logo-vector-download-for-new-7.png"></a></span>
+                <span><a href="https://www.linkedin.com/company/interntheory/about/" target="_blank"><img src="./images/linkedin-logo-3.png"></a></span>
+                <span><a href="https://api.whatsapp.com/send?text=Hi+Interntheory%0D%0A" target="_blank"><img src="./images/png-transparent-computer-icons-whatsapp-whatsapp-text-trademark-logo.png"></a></span>
+            </div>
+
+            <div id="contact_or">OR</div>
+
+            <div id="contact_call">Call:   +91 81047 73673</div>
+
+        </div>
+
+        <div id="contact_second_half">
+            <img id="contact_img" src="./images/Screenshot 2022-06-16 173520.png">
+        </div>
+    </div>
+</body>
+</html>
+
+<script>
+    $('.btn').click(function(){
+        $(this).toggleClass('click')
+        $('.sidebar').toggleClass('show')
+    })
+    $('.feat-btn').click(function(){
+        $('nav ul .feat-show').toggleClass("show");
+        $('nav ul .first').toggleClass("rotate");
+    })
+    $('.serv-btn').click(function(){
+        $('nav ul .serv-show').toggleClass("show1");
+        $('nav ul .second').toggleClass("rotate");
+    })
+
+
+
+    let user = JSON.parse(localStorage.getItem("userdata"));
+
+    if(user!=null)
+    {
+      document.querySelector("#btn").innerHTML=`<a href="profile.html"><h2>Hi, ${user[0].firstname}</h2></a>`
+    }
+    else{
+      alert("Please Create an account first")
+    }
+var i=0
+</script>

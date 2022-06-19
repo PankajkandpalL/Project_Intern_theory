@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style/forget.css">
+</head>
+<body>
+    <div id="main">
+        <img id="image-b" src="./image/back.png"/>
+        <div id="box">
+         <h2 id="fpassword">Forget password</h2>
+         <p>Please enter your email id we will send you a reset password link. Also be sure to check your spam for the reset link.
+        </p>
+        <div id="emaai">
+            <div class="field">
+                <input type="email" name="email" id="email" placeholder="Enter E-mail">
+                <label for="email">Email</label>
+              </div>
+            </div>
+            <div id="jldi"></div>
+            <div id="fo">
+                <button id="butt">Submit</button>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>
+<script type="module" >
+    import forgeta from "./scripts/forget.js"
+    let butt=document.getElementById("butt").addEventListener("click",function(){
+      
+      
+        let get=JSON.parse(localStorage.getItem("userdata"));
+        let val=Math.floor(1000+Math.random()*9000);
+        let emailval=document.getElementById("email").value;
+
+        document.querySelector("#fo").innerHTML=`<img src="https://wpamelia.com/wp-content/uploads/2018/11/ezgif-2-6d0b072c3d3f.gif"/>`;
+
+        setTimeout(function(){
+            if(emailval==get[0].email) {
+            alert("Request accepted, Generating OTP");
+            
+            alert("Your OTP(one time password) is :-"+val);
+           let new1= document.getElementById("jldi").innerHTML=forgeta();
+           let give=()=>{
+            let check=document.getElementById("otp").value=val;
+           }
+           setTimeout(give,1000)
+           let great=()=>{
+            window.location.href="change.html"
+           }
+               setTimeout(great,2000)
+          }
+        else {
+            alert("please fill registered E-mail")
+            document.querySelector("#fo").innerHTML=`<button id="butt">Submit</button>`
+            window.location.reload();
+        }
+        },1500)
+    
+    })
+    
+
+
+
+    document.getElementById("image-b").addEventListener("click",function(){
+            window.location.href="loggin.html"
+            // console.log("hum")
+        })
+
+        
+</script>
