@@ -1,0 +1,1159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<style>
+
+*{
+        margin: 0;
+        padding: 0;
+        /* color: whitesmoke; */
+        user-select: none;
+        box-sizing: border-box;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    }
+    .sidebar{
+        position: fixed;
+        width: 250px;
+        left: -250px;
+        background-color: #fcf9f9;
+        height: 100%;
+        transition: left 0.4s ease;
+    }
+    .sidebar .text{
+        padding-top: 10px;
+        color: rgb(13, 13, 13);
+        font-size: 25px;
+        font-weight: 600;
+        line-height: 65px;
+        text-align: center;
+        background: #f3efef;
+        padding-top: 10px;
+        letter-spacing: 1px;
+    }
+    nav ul{
+        background: #dcd9d9;
+        height: 100%;
+        width: 100%;
+        list-style: none;
+    }
+    nav ul li{
+        line-height: 60px;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    nav ul li a{
+        position: relative;
+        color: rgb(2, 2, 2);
+        text-decoration: none;
+        font-size: 18px;
+        padding-left: 40px;
+        font-weight: 500;
+        display: block;
+        width: 100%;
+        border-left: 3px solid transparent;
+        transition: all 700ms linear;
+    }
+    nav ul li a:hover{
+        color: rgb(52, 55, 55);
+        background: #b9dcde;
+        border-left-color: cyan;
+    }
+    nav ul ul{
+        position: static;
+        display: none;
+    }
+    nav ul .feat-show.show{
+        display: block;
+    }
+    nav ul .serv-show.show1{
+        display: block;
+    }
+    nav ul ul li{
+        line-height: 42px;
+        border-bottom: none;
+    }
+    nav ul ul li a{
+        font-size: 17px;
+        color: #232222;
+        padding-left: 80px;
+    }
+    nav ul li a span{
+        position: absolute;
+        color: rgb(7, 21, 66);
+        top: 48%;
+        right: 20px;
+        font-size: 20px;
+        transform: translateY(-50%);
+        transition: transform 0.4s;
+    }
+    nav ul li a span.rotate{
+        transform: translateY(-50%) rotate(-180deg);
+    }
+    .btn{
+        position: absolute;
+        top: 15px;
+        left: 15px;
+        height: 45px;
+        text-align: center;
+        border-radius: 50%;
+        cursor: pointer;
+        width: 45px;
+        background: #f6f3f3;
+        transition: left 0.4s ease;
+    }
+    .btn:hover{
+        background: #f6f3f3;
+    }
+    .sidebar.show{
+        left: 0px;
+    }
+    .btn.click span:before{
+        content: '\f00d';
+    }
+    .btn.click{
+        left: 260px;
+    }
+    .btn span{
+        color: rgb(0, 0, 0);
+        font-size: 22px;
+        line-height: 45px;
+    }
+    img{
+        height: 40px;
+        width: 100px;
+    }
+    #mainnav{
+        height: 70px;
+        width: 100%;
+        /* border: 1px solid red; */
+        box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+        position: fixed;
+        background-color: white;
+        z-index: 999;
+    }
+    #logo>img{
+        margin-top: 15px;
+        margin-left: 100px;
+        width: 70px;
+    }
+    #btn{
+        position: absolute;
+        right: 40px;
+        top: 15px;
+    }
+    #sign{
+        height: 40px;
+        color: white;
+        border: red;
+        border: 1px solid red;
+        background-color: rgb(224, 17, 17);
+        width: 95px;
+        border-radius: 5px;
+        font-size: 15px;
+    }
+
+    #iclass{
+      top: 15px;
+      position: absolute;
+      right: 170px;
+    }
+
+    /* ----------------------------------------------------------------------------------------- */
+
+
+
+    body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.pointer {
+  cursor: pointer;
+}
+.header {
+  background: #555;
+  color: #f1f1f1;
+  height: 64px;
+  box-shadow: 0px 2px 2px -1px rgb(0 0 0 / 20%);
+  background-color: #fff;
+}
+.header > div {
+  display: flex;
+  padding: 8px 24px 8px 1.5rem;
+  height: 48px;
+}
+.header > div > div {
+  height: auto;
+}
+.hb1 {
+  flex: 0 0 56px;
+}
+.hb2 {
+  flex: 0 0 80px;
+}
+.hb2 img {
+  width: 100%;
+}
+.hb3 {
+  flex-grow: 1;
+}
+.hb4 {
+  display: flex;
+  flex: 0 0 12rem;
+}
+.sign {
+  text-decoration: none;
+}
+.sign > div {
+  margin-top: 5px;
+  padding: 10px;
+  padding-left: 12px;
+  background-color: red;
+  color: white;
+  font-size: 1rem;
+  border-radius: 5px;
+  font-weight: 500;
+}
+.sign > div:hover {
+  opacity: 0.7;
+}
+#shopCart,
+.hb1list {
+  width: 1.5rem;
+  height: 1.5rem;
+  padding: 12px;
+  color: black;
+  border-radius: 1.5rem;
+}
+#shopCart {
+  padding: 0px 12px 12px 12px;
+}
+#shopCart > div {
+  height: 12px;
+  width: 1.5rem;
+}
+#shopCart > div > div {
+  height: 1rem;
+  width: 1rem;
+  background-color: red;
+  z-index: 110;
+  border-radius: 1rem;
+  text-align: center;
+  font-weight: 700;
+  font-size: 12px;
+  padding: 2px;
+  display: none;
+}
+.hb1list:hover {
+  background-color: rgba(0, 0, 0, 0.08);
+}
+#shopCart + div {
+  width: 84px;
+  height: 48px;
+}
+.hbside1 {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  width: 300px;
+  height: 750px;
+  position: fixed;
+  display: none;
+}
+.hbside1 > div {
+  width: 300px;
+  height: 750px;
+  background-color: white;
+  z-index: 100;
+  position: fixed;
+
+  box-shadow: 0px 3px 5px -1px rgb(0 0 0 / 20%),
+    0px 5px 8px 0px rgb(0 0 0 / 14%), 0px 1px 14px 0px rgb(0 0 0 / 12%);
+}
+.hb1sidehead {
+  display: flex;
+  padding: 8px 24px 8px 1.5rem;
+}
+.hb1sidehead ~ div {
+  width: 100%;
+  height: 46px;
+  cursor: pointer;
+}
+.hb1sidehead ~ div:hover {
+  background-color: rgba(0, 0, 0, 0.08);
+}
+.hb1sidehead ~ div > a {
+  width: 100%;
+  height: 1.5rem;
+  display: flex;
+  padding: 11px 16px 11px 1rem;
+  text-decoration: none;
+  color: black;
+}
+.hb1sidehead ~ div > a > div {
+  padding-right: 2rem;
+  display: flex;
+  align-items: center;
+}
+.hb1sideheaddivadiv {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.content {
+  padding-top: 64px;
+}
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+.contentFoot {
+  background-color: rgb(54, 80, 96);
+  padding: 2% 10% 2% 10%;
+  color: white;
+  font-size: 14px;
+}
+.contentFoot > div {
+  width: 100%;
+  display: flex;
+}
+.footb1 {
+  justify-content: center;
+  align-items: center;
+}
+.connect {
+  width: 6%;
+  height: 10rem;
+  display: flex;
+  min-width: 3.75rem;
+  flex-direction: column;
+  align-items: center;
+}
+.connect > div {
+  height: 1.875rem;
+  width: auto;
+  padding-top: 10px;
+}
+.info {
+  width: 94%;
+  display: flex;
+  justify-content: space-between;
+  padding-top: 1.25rem;
+}
+.info > div {
+  flex: 30% 0 0;
+}
+.info > div > div {
+  padding: 3px;
+}
+.footb2 {
+  justify-content: space-around;
+  padding-top: 1.25rem;
+}
+.footb3 {
+  justify-content: space-around;
+  text-align: center;
+}
+
+#regCom,
+#regStu,
+#logCom,
+#logStu {
+  display: none;
+}
+#top{
+        width:100%;
+        margin: 0%;
+        border-bottom: 1px solid rgb(209, 209, 209);
+        box-shadow: 0px 0.125rem 0.125rem;
+
+
+    }
+    #navbar {
+        margin-top:-0.313rem;
+        width:100%;
+        height:4.375rem;
+        background-color:white;
+        font-family: 'Roboto', sans-serif;
+
+    }
+    .openbtn{
+        float: left;
+        font-size:24px;
+        margin-top:0.75rem;
+        margin-left:0.938rem;
+    }button{
+        cursor:pointer;
+    }
+
+    #cart,#bell,#avatar{
+        font-size:1.5rem !important;
+        margin-top:1.25rem;
+        margin-right: 0.813rem;
+        width: 1.875rem;
+        float:right;
+
+    }
+    #bell{
+        font-size:1.5rem;
+        color: rgb(83, 83, 83);
+    }
+    #avatar{
+        margin-top:1rem;
+        font-size:30.125rem !important;
+        color: rgb(148, 148, 148);
+    }
+    #logo{
+        margin-top:7px;
+        width:5.313rem;
+        height:2.625rem;
+        margin-left:1.875rem;
+    }
+
+    .overlay{
+        width:2.188rem;
+        height:2.188rem;
+        border-radius:50%;
+        background-color: rgb(0, 0, 0);
+        opacity: 0;
+    }
+
+     a:hover {
+        opacity: 0.8;
+        }
+        #myCity,#myType,#myPreferences,#search{
+            height:2.188rem;
+            width:15.625rem;
+            border:none;
+            border-bottom: 1px solid rgb(43, 43, 43);
+            font-size:1.25rem;
+            font-weight:100;
+            font-family: 'Roboto', Helvetica, Arial, sans-serif;
+        }
+        #inputs{
+            margin-left:10%;
+            margin-top: 0.625rem;
+            margin-bottom:1.25rem;
+
+
+
+        }
+        #inputs label {
+            margin-right: 1%;
+        }
+        #myForm{
+        width:70%;
+        float:left;
+        font-family: 'Roboto', Helvetica, Arial, sans-serif;
+        color:#bdbdbd
+        }
+        .or{
+            float:left;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "OpenSans", "Helvetica Neue", sans-serif;
+            font-size: 16px;
+            color: black;
+            margin-top: 0.625rem;
+            margin-left: -9.375rem;
+
+        }
+        #search{
+            margin-left: -6.25rem;
+        }
+        #main{
+            width: 100%;
+            height:87.5rem;
+         /*   margin-top:0.625rem;*/
+            background-color:rgba(240, 239, 239, 0.836);
+          /*  border: 1px solid black;*/
+        }
+        #leftbox{
+            margin-top:0.625rem;
+            float: left;
+            width:18.75rem;
+            height:50rem;
+            margin-left:8%;
+          /*  border: 1px solid black;*/
+        }
+        #leftbox img{
+            width:100%;
+            height:18.75rem;
+            box-shadow: 0 0.125rem 0.125rem 0 rgba(80, 80, 80, 0.2), 0 0.125rem 0.313rem 0 rgba(83, 83, 83, 0.19);
+        }
+        #rightbox{
+            background-color:white;
+            margin-top:0.625rem;
+            margin-left:1.25rem;
+            font-family: 'Roboto', Helvetica, Arial, sans-serif;
+            float: left;
+            width:56.25rem;
+            /* height:68.75rem; */
+            box-shadow: 0 0.125rem 0.125rem 0 rgba(80, 80, 80, 0.2), 0 0.125rem 0.313rem 0 rgba(83, 83, 83, 0.19);
+          /*  border: 1px solid black;*/
+        }
+        .first_heading{
+            font-size:1.563rem;
+            font-weight:400;
+            margin-top:1.438rem;
+            margin-left: 1.438rem;
+            margin-bottom:0.563rem;
+        }
+        .r_blocks{
+            border-bottom: 0.125rem dashed rgb(194, 192, 192);
+            width:90%;
+            margin-left: 5%;
+            height:10.625rem;
+            margin-top:0px;
+
+        }
+        .r_blocks img{
+            margin-top:1.25rem;
+            height:6.25rem;
+            width:6.25rem;
+            float:left;
+        }
+        .block_texts{
+            /* border: 1px solid black; */
+            float:left;
+            width:80%;
+            margin-top: 1.438rem;
+        }
+        .block_texts p{
+            font-size: 14px !important;
+            font-weight: 400 !important;
+            color: gray;
+            margin: 0px;
+            margin-top: 0.313rem !important;
+            margin-left: 1rem !important;
+            line-height: 1.3;
+        }
+        .block_texts span{
+            margin-top:0px !important;
+            margin-bottom: 0.125rem;
+            font-size:1.25rem;
+            margin-left: 1rem !important;
+            color:#3C4858;
+
+        }
+        .block_texts p:first-of-type{
+            font-weight: 500 !important;
+            margin-top:4px !important;
+            color:#3C4858 !important;
+
+        }
+        .block_texts a:first-of-type{
+            font-weight: 700 !important;
+            color: rgb(104, 103, 103);
+        }
+         .view{
+            background-color:white !important;
+            border: 0px !important;
+            color:#087CDD !important;
+            float: right !important;
+            font-size: 15px !important;
+            margin-top: -1.563rem;
+            padding-top: 0px;
+            margin-right: -3.625rem;
+        }
+
+        .material_icons{
+            font-size:1.5rem !important;
+        }
+        .block_texts button{
+            background-color:white;
+            border: 0px !important;
+            float: right !important;
+            margin-top: -5.5rem;
+            margin-right: -3.625rem;
+            font-size:32 !important;
+        }
+
+        #toggle_div {
+            margin-top:-4rem;
+            width:6rem;
+            display: grid;
+            grid-template-columns: repeat(5,1.25rem);
+            column-gap: 0.6rem;
+            float:right;
+            margin-bottom: 0px;
+            margin-right: -0.8rem;
+            visibility: hidden ;
+        }
+        .toggle_buttons{
+            width:1.6rem;
+            height:1.6rem;
+        }
+        .toggle_buttons img{
+            width:1.6rem;
+            height:1.6rem;
+            margin:0px;
+        }
+        .duration{
+            font-family: 'Roboto', Helvetica, Arial, sans-serif;
+            float: right;
+            margin-top: -3.625rem !important;
+            margin-right: 0.5rem !important;
+            font-size:14px;
+            color:#3C4858;
+        }
+        .rightBox_img_blocks{
+            width:21.875rem;
+            height:3.125rem;
+            border: 1px solid rgb(214, 214, 214);
+            float:left;
+            margin-left:1.25rem;
+            border-radius: 0.313rem;
+            cursor:pointer;
+        }
+        .rightBox_img_blocks img{
+            height:3.125rem;
+            width:6.25rem;
+            float:left;
+        }
+        .rightBox_img_blocks p{
+            font-family: 'Roboto', Helvetica, Arial, sans-serif;
+            float: left;
+            font-size: 14px;
+            margin-top: 0.313rem;
+            margin-left: 0.313rem;
+        }
+        .rightBox_img_blocks h6{
+            font-family: 'Roboto', Helvetica, Arial, sans-serif;
+            float: left;
+            font-size: 0.625rem;
+            margin:0;
+            margin-top:-0.625rem;
+            margin-left: 0.5rem;
+        }
+        .recommended{
+           display: flex;
+           flex-wrap: nowrap;
+            overflow: hidden !important;
+
+            width:56.25rem;
+            height:3.75rem;
+
+
+        }
+        .recommended_heading{
+            color:gray;
+            font-size:1.25rem;
+            margin-left: 1.25rem;
+            margin-bottom:0.5rem;
+            font-weight:400;
+        }
+        #main_dashboard{
+            height:37.5rem;
+            width:56.25rem;
+            background-color:white;
+            box-shadow: 0 0.125rem 0.125rem 0 rgba(80, 80, 80, 0.2), 0 0.125rem 0.313rem 0 rgba(83, 83, 83, 0.19);
+            float:left;
+            margin-left: 1.25rem;
+            margin-top: 1.875rem;
+            
+        }
+        .dash_selector button{
+            background-color: white;
+            border:none;
+            font-family: 'Roboto', Helvetica, Arial, sans-serif;
+            margin-top:1.25rem;
+            margin-left: 0.625rem;
+        }
+        #user_data {
+        width: 18.75rem;
+        height: 18.75rem;
+        box-shadow: 0 0.125rem 0.125rem 0 rgba(80, 80, 80, 0.2), 0 0.125rem 0.313rem 0 rgba(83, 83, 83, 0.19);
+        background-color: white;
+    }
+
+    /* #rightbox {
+        height: 400px;
+    } */
+
+    #rightHeading {
+        width: 56.25rem;
+        height: 2.5rem;
+        float: left;
+        margin-left: 1.25rem;
+        margin-top: 0.625rem;
+        background-color: white;
+        border: 0.125rem dashed #e06f78;
+        border-radius:0.313rem;
+        padding-top: 0px;
+        padding-bottom: 0.125rem;
+    }
+    #rightHeading p{
+        font-family: 'Roboto', Arial, Helvetica, sans-serif;
+        font-size: 14px;
+        margin-left: 0.625rem ;
+    }
+
+    #user_data a {
+        font-family: 'Roboto', sans-serif;
+        font-size: 13px;
+        text-align: center;
+        padding-top: 0.313rem;
+        background-color: rgb(2, 107, 245);
+        color: white;
+        border: 0px;
+        box-shadow: 0 0px 0px;
+        border-radius: 0.313rem;
+        font-weight: bold;
+        float: left;
+        height: 1.25rem;
+        width: 5.625rem;
+        margin-left: 6.563rem;
+        margin-top: 0.313rem;
+        text-decoration: none;
+    }
+
+    #user_data p:first-of-type {
+        font-family: 'Roboto', Arial, Helvetica, sans-serif;
+        float: left;
+        clear: both;
+        margin-left: 6.813rem;
+        margin-top: 0.313rem;
+        font-size: 14px;
+        color: rgb(153, 153, 153);
+
+    }
+      .data {
+        font-family: 'Roboto', Arial, Helvetica, sans-serif;
+        text-align: left;
+        margin-left: 3.125rem;
+        margin-top: 0.625rem;
+    }
+
+    .heading1 {
+        font-family: 'Roboto', Arial, Helvetica, sans-serif;
+        float: left;
+        font-size: 1.25rem;
+        margin-top: 1.563rem;
+        margin-left: 1.563rem;
+
+    }
+
+    .heading1 a {
+        font-size: 20.125rem;
+        font-weight: 600;
+    }
+     .catalogue{
+            width:12.5rem;
+            height:1.563rem;
+            padding-top: 0.313rem;
+            border:1px solid #499ce0;
+            border-radius: 0.313rem;
+            text-align: center;
+            float:left;
+            font-family: 'Roboto', Helvetica, Arial, sans-serif;
+            margin-left: 21.875rem;
+
+        }
+        .smiley{
+            text-align: center;
+        }
+        .courses p{
+            text-align: center;
+            font-family: 'Roboto', Helvetica, Arial, sans-serif;
+
+        }
+        .courses{
+            margin-top:5rem;
+        }
+        .status{
+            font-family: 'Roboto', Helvetica, Arial, sans-serif;
+            color:rgb(255, 160, 0) !important;
+            float:right;
+            font-size: 16px !important;
+            margin-top: -4.063rem !important;
+
+        }
+        .view_app{
+            float:right;
+            color:#087CDD !important;
+            cursor:pointer;
+            font-weight: 600 !important;
+        }
+        #unnati{
+            margin-top: 6px;
+        }
+</style>
+<body>
+    <div id="mainnav">
+        <div class="btn">
+            <span class="fas fa-bars"></span>
+        </div>
+        <nav class="sidebar">
+            <div class="text"><img id="internimg" src="https://assets.interntheory.com/creative/logo.png" alt=""></div>
+            <ul>
+                <li>
+                    <a href="index.html">Home</a>
+                </li>
+                <li><a href="internship.html">Internships</a></li>
+                <li><a href="job.html">Jobs</a></li>
+                <li><a href="#">Post Internships</a></li>
+                <li>
+                    <a href="#" class="feat-btn">Courses
+                        <span class="fas fa-caret-down first"></span>
+                    </a>
+                    <ul class="feat-show">
+                        <li><a href="newonline_course.html">Online Courses</a></li>
+                        <li><a href="newoffline_course.html">Classroom Training</a></li>
+                    </ul>
+                </li>
+                <li><a href="contact.html">Contact Us</a></li>
+                <li>
+                    <a href="#" class="serv-btn">Login
+                        <span class="fas fa-caret-down second"></span>
+                    </a>
+                    <ul class="serv-show">
+                        <li><a href="#">Company</a></li>
+                        <li><a href="#">Student</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+        <div id="logo"><img id="internimg" src="https://assets.interntheory.com/creative/logo.png" alt=""></div>
+        <div id="iclass"><i class="fa fa-shopping-cart" style="font-size:36px"></i></div>
+        <div id="btn">
+            <input type="button"  id="sign" value="SIGN IN">
+        </div>
+    </div>
+
+    <!-- ---------------------------------------------------- -->
+
+
+     <div class="content" id="con1" style="margin-bottom: 0px; height: 1200px; border: 1px solid red; padding-bottom: 0px;">
+        <div id='main'>
+            <div id='leftbox'>
+                <div id='user_data'>
+                    <img src='https://img.freepik.com/free-vector/businessman-character-avatar-isolated_24877-60111.jpg?size=338&ext=jpg'
+                        style='width:100px;height:100px;margin-left: 100px;margin-top: 30px'>
+                    <a href='profile.html'>MY PROFILE</a>
+                    <!-- <p>Albart Jose</p>
+                    <div
+                        style='height:-5px;width:230px;border:1px solid rgb(151, 151, 151);float:left;margin-left:35px;margin-bottom: 15px;'>
+                    </div>
+                    <p class='data'>albartbtme@gmail.com</p>
+                    <p class='data'>7408939361</p> -->
+                </div>
+            </div>
+            <div id='rightHeading'>
+                <p>Still in college and want to start a business already? Become our affiliate and kickstart your
+                    entrepreneurial journey. <a style='color:#DF1E2E'><strong>Click here for details</strong></a></p>
+            </div>
+            <div id='rightbox' style='height:15.25rem'>
+                <div style='width:800px'>
+                    <p class='recommended_heading'>Recommended Courses</p>
+                    <div class='recommended'>
+                        <div class='rightBox_img_blocks'>
+                            <img
+                                src='https://assets.interntheory.com/creative/courses/thumbnails/web-development-course.png'>
+                            <p>Web Development Course</p>
+                        </div>
+                        <div class='rightBox_img_blocks'>
+                            <img
+                                src='https://assets.interntheory.com/creative/courses/thumbnails/r-programming-course.png'>
+                            <p>R Programming Course</p>
+                        </div>
+                        <div class='rightBox_img_blocks'>
+                            <img src='https://assets.interntheory.com/courses/banner/1573120508.png'>
+                            <p>Digital Marketing Course</p>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <p class='recommended_heading'>Recomended Internships</p>
+                    <div class='recommended'>
+                        <div class='rightBox_img_blocks'>
+                            <img
+                                src='https://assets.interntheory.com/uploads/company/logos/f09d2dbf9a5c5c0eff067b703b279aeb0089b64c.jpg'>
+                            <p>Business Development</p>
+                            <h6 id="unnati">Unnati: The Knowledge Hub</h6>
+                        </div>
+                        <div class='rightBox_img_blocks'>
+                            <img
+                                src='https://assets.interntheory.com/uploads/company/logos/a74d88544322279c33db28830bff100d0d6e12f6.jpg'>
+                            <p>Business Develoment</p>
+                            <h6 id="unnati">Strategy Wanted</h6>
+                        </div>
+                        <div class='rightBox_img_blocks'>
+                            <img src='https://assets.interntheory.com/uploads/company/companylogos/56716f23c5db6.jpg'>
+                            <p>Sales and Marketing</p>
+                            <h6 id="unnati">AEGIS CONSULTANTS</h6>
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+            </div>
+            <div id='main_dashboard'>
+                <div class='dash_selector'>
+                    <a> <button onclick='myApplication()'>MY APPLICATION</button></a>
+                    <a><button onclick='myCourses()'>MY COURSES</button></a>
+                </div>
+                <div id='dashboard_content'>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="contentFoot">
+        <div class="footb1">
+            <div class="connect">
+                <div><span class="material-icons">
+                        facebook
+                    </span>
+                </div>
+                <div><span class="material-icons">
+                        facebook
+                    </span>
+                </div>
+                <div><span class="material-icons">
+                        facebook
+                    </span>
+                </div>
+                <div><span class="material-icons">
+                        facebook
+                    </span>
+                </div>
+
+            </div>
+            <div class="info">
+                <div>
+                    <div>BY PLACE</div>
+                    <hr>
+                    <div>Internships In Mumbai</div>
+                    <div>Internships In Delhi</div>
+                    <div>Internships In Bangalore</div>
+                    <div>Internships In Pune</div>
+                    <div>Internships In Hyderabad</div>
+                </div>
+                <div>
+                    <div>BY PROFILE</div>
+                    <hr>
+                    <div>Marketing Internships</div>
+                    <div>Business Development Internships</div>
+                    <div>Content Writing Interships</div>
+                    <div>Graphic Design Internships</div>
+                    <div>HR internships</div>
+                    <div>Engineering Internships</div>
+                </div>
+                <div>
+                    <div>BY TYPE</div>
+                    <hr>
+                    <div>Full Time Internships</div>
+                    <div>Part Time Internships</div>
+                    <div>Work From Home Internships</div>
+                </div>
+            </div>
+        </div>
+        <div class="footb2">
+            <div>Find Intership</div>
+            <div>Post Intership</div>
+            <div>Courses</div>
+            <div>Terms&Conditions</div>
+            <div>Privacy Polivy</div>
+            <div>Contact us</div>
+            <div>About us</div>
+            <div>Site us</div>
+        </div>
+        <hr>
+        <div class="footb3">
+            © 2015 - 2021 INTERNTHEORY. ALL RIGHTS RESERVED.
+        </div>
+
+    </div>
+
+
+
+    
+</body>
+</html>
+
+<script>
+    $('.btn').click(function(){
+        $(this).toggleClass('click')
+        $('.sidebar').toggleClass('show')
+    })
+    $('.feat-btn').click(function(){
+        $('nav ul .feat-show').toggleClass("show");
+        $('nav ul .first').toggleClass("rotate");
+    })
+    $('.serv-btn').click(function(){
+        $('nav ul .serv-show').toggleClass("show1");
+        $('nav ul .second').toggleClass("rotate");
+    })
+
+
+    let user = JSON.parse(localStorage.getItem("userdata"));
+
+    if(user!=null)
+    {
+      document.querySelector("#btn").innerHTML=`<a href="index.html"><h2>Home</h2></a>`
+    }
+    else{
+      alert("Please Create an account first")
+    }
+
+
+
+    // -------------------------------------------------------------------------------------
+
+
+
+
+    var dashboard = document.getElementById('dashboard_content');
+
+
+var applications = [
+    {
+        img: 'https://assets.interntheory.com/uploads/company/logos/35be96426ec8eeb524ab288d9f7e665a8c6113a2.jpg',
+        course: 'Jr Sales Engineer',
+        companyName: 'Allwave AV',
+        type: 'Full Time Internship',
+        category: 'Business Development',
+        city: 'mumbai',
+        stipend: '8000 per month'
+        
+    }];
+
+    if (localStorage.getItem('applications') == null) {
+    (localStorage.setItem('applications', JSON.stringify(applications)));
+}
+
+
+
+function myApplication() {
+    dashboard.innerHTML = null;
+
+    function showApplications(e) {
+        let block = document.createElement('div');
+        block.setAttribute('class', 'r_blocks');
+    
+    
+        let block_img = document.createElement('img');
+        block_img.src = e.img;
+        block.append(block_img);
+        let block_texts = document.createElement('div');
+        block_texts.setAttribute('class', 'block_texts');
+        block.append(block_texts)
+        let block_course = document.createElement('span');
+        block_course.innerHTML = e.course;
+        block_texts.append(block_course)
+        let block_company = document.createElement('p');
+        block_company.innerHTML = e.companyName;
+        block_texts.append(block_company)
+        let block_stipend = document.createElement('p');
+        block_stipend.innerHTML = `Stipend:<a> ${e.stipend}</a>`;
+        block_texts.append(block_stipend);
+        let status = document.createElement('a');
+        status.setAttribute('class', 'status');
+        status.innerHTML = 'PENDING';
+        block_texts.append(status);
+        let view = document.createElement('p');
+        view.setAttribute('class','view_app')
+        view.innerHTML = 'VIEW APPLICATION STATUS';
+        block_texts.append(view);
+        
+    
+
+
+
+    dashboard.append(block);
+
+        
+    }
+    var content = (JSON.parse(localStorage.getItem('applications')));
+    var n = content.length;
+    for (let i = 0; i < n; i++){
+        showApplications(content[i]);
+    }
+    
+    console.log(content)
+ 
+
+}
+myApplication();
+
+function myCourses() {
+    dashboard.innerHTML = null;
+
+    let div = document.createElement('div');
+    div.setAttribute('class', 'courses');
+
+    let smiley = document.createElement('div');
+    smiley.setAttribute('class', 'smiley');
+    smiley.innerHTML = `<span class="material-icons" style="color:#087CDD;font-size:30px">sentiment_satisfied_alt</span>`;
+    div.append(smiley);
+    
+    let div_p = document.createElement('p');
+    div_p.innerHTML = 'Not picked any course yet?'
+    div.append(div_p);
+
+    let catalogue = document.createElement('div');
+    catalogue.setAttribute('class', 'catalogue')
+    catalogue.innerHTML = `<a href = 'online_courses.html' style="color:#087CDD;text-decoration:none">UPGRADE YOURSELF NOW</a>`;
+    div.append(catalogue);
+
+    dashboard.append(div);
+
+}
+
+
+
+    let userdatadetails=JSON.parse(localStorage.getItem("userdata"));
+
+    let p = document.createElement("p")
+    p.innerText=`${userdatadetails[0].firstname} ${userdatadetails[0].lastname}`;
+    p.style.marginBottom="6px"
+    p.style.marginTop="10px"
+
+    let hr = document.createElement("hr");
+    hr.style.width="90%"
+    hr.style.margin="auto"
+    hr.style.marginBottom="5px"
+
+    let p2 = document.createElement("p")
+    p2.innerText=userdatadetails[0].email;
+    p2.setAttribute("class","data")
+    p2.style.width="90%"
+    p2.style.margin="auto"
+    // p2.style.marginLeft="30px"
+    p2.style.textAlign="center"
+    p2.style.marginBottom="5px"
+
+    
+    let p3 =document.createElement("p")
+    p3.innerText = userdatadetails[0].mobile;
+    p3.setAttribute("class","data")
+    p3.style.width="90%"
+    p3.style.margin="auto"
+    // p3.style.marginLeft="30px"
+    p3.style.textAlign="center"
+
+    document.querySelector("#user_data").append(p,hr,p2,p3)
+
+
+
+
+
+
+
+
+
+</script>
