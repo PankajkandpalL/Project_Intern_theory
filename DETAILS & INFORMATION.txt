@@ -1,0 +1,15 @@
+https://www.interntheory.com/
+
+Soumya Subrat Moharana - IA
+
+Arijit Bhatta	fp03_226	Courses
+Aman Kumar		fw18_0801	Login, register, Contactus and forget password
+Surya Moharana	fp03_265	Internship
+Avinash Kumar	fw17_0534	Jobs
+Nitesh Samaniya	fw18_0433	Login, register, Contactus and forget password
+Pankaj Kandpal	fw18_0523	Home Page
+
+Masai Construct Week Project Guidelines - https://www.notion.so/Masai-Construct-Week-Project-Guidelines-25374cfa81bc4fe590a4b234cc49b287
+What is a construct week? - https://elite-pancreas-707.notion.site/What-is-a-construct-week-4e314f787cfd4960b299df1f605d6957
+Project Design Tools & Resources - https://www.notion.so/Project-Design-Tools-Resources-ccf9608450c148ebb5e079965b346f5c
+CW Judging Criteria - https://elite-pancreas-707.notion.site/CW-Judging-Criteria-4502d6a8d5974321a96aad9e29a55873

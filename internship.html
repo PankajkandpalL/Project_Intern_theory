@@ -1,0 +1,1473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        *{
+        margin: 0;
+        padding: 0;
+        /* color: whitesmoke; */
+        user-select: none;
+        box-sizing: border-box;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    }
+    .sidebar{
+        position: fixed;
+        width: 250px;
+        left: -250px;
+        background-color: #fcf9f9;
+        height: 100%;
+        transition: left 0.4s ease;
+    }
+    .sidebar .text{
+        padding-top: 10px;
+        color: rgb(13, 13, 13);
+        font-size: 25px;
+        font-weight: 600;
+        line-height: 65px;
+        text-align: center;
+        background: #f3efef;
+        padding-top: 10px;
+        letter-spacing: 1px;
+    }
+    nav ul{
+        background: #dcd9d9;
+        height: 100%;
+        width: 100%;
+        list-style: none;
+    }
+    nav ul li{
+        line-height: 60px;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    nav ul li a{
+        position: relative;
+        color: rgb(2, 2, 2);
+        text-decoration: none;
+        font-size: 18px;
+        padding-left: 40px;
+        font-weight: 500;
+        display: block;
+        width: 100%;
+        border-left: 3px solid transparent;
+    }
+    nav ul li a:hover{
+        color: rgb(52, 55, 55);
+        background: #c0dadc;
+        border-left-color: cyan;
+    }
+    nav ul ul{
+        position: static;
+        display: none;
+    }
+    nav ul .feat-show.show{
+        display: block;
+    }
+    nav ul .serv-show.show1{
+        display: block;
+    }
+    nav ul ul li{
+        line-height: 42px;
+        border-bottom: none;
+    }
+    nav ul ul li a{
+        font-size: 17px;
+        color: #232222;
+        padding-left: 80px;
+    }
+    nav ul li a span{
+        position: absolute;
+        color: rgb(7, 21, 66);
+        top: 48%;
+        right: 20px;
+        font-size: 20px;
+        transform: translateY(-50%);
+        transition: transform 0.4s;
+    }
+    nav ul li a span.rotate{
+        transform: translateY(-50%) rotate(-180deg);
+    }
+    .btn{
+        position: absolute;
+        top: 15px;
+        left: 15px;
+        height: 45px;
+        text-align: center;
+        border-radius: 50%;
+        cursor: pointer;
+        width: 45px;
+        background: #f6f3f3;
+        transition: left 0.4s ease;
+    }
+    .btn:hover{
+        background: #f6f3f3;
+    }
+    .sidebar.show{
+        left: 0px;
+    }
+    .btn.click span:before{
+        content: '\f00d';
+    }
+    .btn.click{
+        left: 260px;
+    }
+    .btn span{
+        color: rgb(0, 0, 0);
+        font-size: 22px;
+        line-height: 45px;
+    }
+    img{
+        height: 40px;
+        width: 100px;
+    }
+    #mainnav{
+        height: 70px;
+        width: 100%;
+        /* border: 1px solid red; */
+        box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+        position: fixed;
+        background-color: white;
+        z-index: 999;
+    }
+    #logo>img{
+        margin-top: 15px;
+        margin-left: 100px;
+        width: 70px;
+    }
+    #btn{
+        position: absolute;
+        right: 40px;
+        top: 15px;
+    }
+    #sign{
+        height: 40px;
+        color: white;
+        border: red;
+        border: 1px solid red;
+        background-color: rgb(224, 17, 17);
+        width: 95px;
+        border-radius: 5px;
+        font-size: 15px;
+    }
+
+    #iclass{
+      top: 15px;
+      position: absolute;
+      right: 170px;
+    }
+
+    /* --------------------------------------------------sidebar completed------------------------------- */
+
+
+
+
+
+    
+#container{
+    width:82%;
+    margin:auto;
+    display:flex;
+    margin-bottom: 40px;
+    justify-content: space-between;
+}
+#left{
+    width:300px;
+    height:300px;  
+    box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
+}
+#left>img{
+    width:100%;
+    height:100%
+}
+#right{
+    width:900px;
+    height:auto;
+    border-bottom-right-radius: 5px;
+    border-top-right-radius: 5px;
+  /* border: 1px solid red; */
+    overflow-y: scroll;
+    box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
+    height: 700px;
+}
+#right::-webkit-scrollbar{
+  width: 15px;
+}
+#right::-webkit-scrollbar-track{
+  background: #dddddd;
+  border-radius: 10px;
+}
+#right::-webkit-scrollbar-thumb{
+  background: #db1d5c;
+  border-radius: 10px;
+}
+#right>h2{
+    font-family: Arial;
+    font-weight: normal;
+    margin-left: 20px;
+}
+#rightdiv{
+    display:flex;
+    width:95%;
+    height:auto;
+    justify-content: space-between;
+    margin:auto
+}
+#rightdiv>img{
+    height:100px;
+    width:100px;
+    margin-top:25px
+}
+.courses{
+
+    line-height: 5px;
+    font-family: arial;
+}
+.courses>h3{
+    color:rgb(95, 93, 93);
+    font-weight:normal;
+    font-size: 22px;
+}
+.courses>p{
+    color:grey;
+    font-weight:normal;
+    font-size: 15px;
+}
+#tag{
+    color:rgb(95, 93, 93);
+}
+#stipend{
+    color:rgb(95, 93, 93);
+    font-weight: bold;
+}
+#courseright{
+    text-align:right;
+    font-family: arial;
+    color:grey;
+    line-height:40px
+}
+#courseright>img{
+    height: 20px;
+    width:20px
+}
+#right>hr{
+    width:95%
+}
+#courseright>button{
+    background-color: transparent;
+    color:blue;
+    border:0px;
+    font-weight: bold;
+}
+#rightleft{
+    display:flex;
+    justify-content: space-between;
+    width:720px
+}
+
+select{
+    width:15cm
+  }
+#selectbar{
+    height: 70px;
+    width: 100%;
+    margin-bottom: 40px;
+    /* border: 1px solid grey; */
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+}
+#oooo{
+    height: 70px;
+    width: 100%;
+    background-color: black;
+}
+
+#one{
+ /* position: absolute; */
+ margin-top: 15px;
+}
+#tag{
+  margin-top: 20px;
+}
+#two{
+  margin-top: 15px;
+}
+#three{
+  margin-top: 15px;
+}
+#four{
+  margin-top: 15px;
+}
+#stipend{
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+ /*------------------------------ Footer Csss----------------------------- */
+
+ footer {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #446478;
+}
+.pointer {
+  cursor: pointer;
+}
+.header {
+  background: #555;
+  color: #f1f1f1;
+  height: 64px;
+  box-shadow: 0px 2px 2px -1px rgb(0 0 0 / 20%);
+  background-color: #fff;
+}
+.header > div {
+  display: flex;
+  padding: 8px 24px 8px 1.5rem;
+  height: 48px;
+}
+.header > div > div {
+  height: auto;
+}
+.hb1 {
+  flex: 0 0 56px;
+}
+.hb2 {
+  flex: 0 0 80px;
+}
+.hb2 img {
+  width: 100%;
+}
+.hb3 {
+  flex-grow: 1;
+}
+.hb4 {
+  display: flex;
+  flex: 0 0 12rem;
+}
+.sign {
+  text-decoration: none;
+}
+.sign > div {
+  margin-top: 5px;
+  padding: 10px;
+  padding-left: 12px;
+  background-color: red;
+  color: white;
+  font-size: 1rem;
+  border-radius: 5px;
+  font-weight: 500;
+}
+.sign > div:hover {
+  opacity: 0.7;
+}
+#shopCart,
+.hb1list {
+  width: 1.5rem;
+  height: 1.5rem;
+  padding: 12px;
+  color: black;
+  border-radius: 1.5rem;
+}
+#shopCart {
+  padding: 0px 12px 12px 12px;
+}
+#shopCart > div {
+  height: 12px;
+  width: 1.5rem;
+}
+#shopCart > div > div {
+  height: 1rem;
+  width: 1rem;
+  background-color: red;
+  z-index: 110;
+  border-radius: 1rem;
+  text-align: center;
+  font-weight: 700;
+  font-size: 12px;
+  padding: 2px;
+  display: none;
+}
+.hb1list:hover {
+  background-color: rgba(0, 0, 0, 0.08);
+}
+#shopCart + div {
+  width: 84px;
+  height: 48px;
+}
+.hbside1 {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  width: 300px;
+  height: 750px;
+  position: fixed;
+  display: none;
+}
+.hbside1 > div {
+  width: 300px;
+  height: 750px;
+  background-color: white;
+  z-index: 100;
+  position: fixed;
+
+  box-shadow: 0px 3px 5px -1px rgb(0 0 0 / 20%),
+    0px 5px 8px 0px rgb(0 0 0 / 14%), 0px 1px 14px 0px rgb(0 0 0 / 12%);
+}
+.hb1sidehead {
+  display: flex;
+  padding: 8px 24px 8px 1.5rem;
+}
+.hb1sidehead ~ div {
+  width: 100%;
+  height: 46px;
+  cursor: pointer;
+}
+.hb1sidehead ~ div:hover {
+  background-color: rgba(0, 0, 0, 0.08);
+}
+.hb1sidehead ~ div > a {
+  width: 100%;
+  height: 1.5rem;
+  display: flex;
+  padding: 11px 16px 11px 1rem;
+  text-decoration: none;
+  color: black;
+}
+.hb1sidehead ~ div > a > div {
+  padding-right: 2rem;
+  display: flex;
+  align-items: center;
+}
+.hb1sideheaddivadiv {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.content {
+  padding-top: 64px;
+}
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+.contentFoot {
+  background-color: #446478;
+  padding: 2% 10% 2% 10%;
+  color: white;
+  font-size: 14px;
+}
+.contentFoot > div {
+  width: 100%;
+  display: flex;
+}
+.footb1 {
+  justify-content: center;
+  align-items: center;
+}
+.connect {
+  width: 6%;
+  height: 10rem;
+  display: flex;
+  min-width: 3.75rem;
+  flex-direction: column;
+  align-items: center;
+}
+.connect > div {
+  height: 1.875rem;
+  width: auto;
+  padding-top: 10px;
+}
+.info {
+  width: 94%;
+  display: flex;
+  justify-content: space-between;
+  padding-top: 1.25rem;
+}
+.info > div {
+  flex: 30% 0 0;
+}
+.info > div > div {
+  padding: 3px;
+}
+.footb2 {
+  justify-content: space-around;
+  margin-bottom: 6px;
+  margin-top: 18px;
+  padding-top: 1.25rem;
+}
+.footb2>div{
+  text-transform: uppercase;
+}
+.footb3 {
+  justify-content: space-around;
+  text-align: center;
+  margin-top: 6px;
+}
+
+#regCom,
+#regStu,
+#logCom,
+#logStu {
+  display: none;
+}
+
+
+
+
+@media (min-width:450px) and (max-width:750px){
+
+
+
+  #mainnav{
+    width: 750px;
+  }
+
+
+  #btn{
+    width: 90px;
+    height: 30px;
+    font-size: 15px;
+  }
+
+  select{
+    width: 8cm;
+  }
+
+  #container{
+    width:22%;
+  }
+
+  #left{
+    position: absolute;
+    left: 80px;
+    top:180px;
+    width:180px;
+    height:180px;  
+    box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
+}
+  /* #right{
+    width: 100%;
+  } */
+}
+
+
+
+
+    </style>
+</head>
+<body>
+    <div id="mainnav">
+        <div class="btn">
+            <span class="fas fa-bars"></span>
+        </div>
+        <nav class="sidebar">
+            <div class="text"><img src="https://assets.interntheory.com/creative/logo.png" alt=""></div>
+            <ul>
+                <li>
+                    <a href="index.html">Home</a>
+                </li>
+                <li><a href="internship.html">Internships</a></li>
+                <li><a href="job.html">Jobs</a></li>
+                <li><a href="#">Post Internships</a></li>
+                <li>
+                    <a href="#" class="feat-btn">Courses
+                        <span class="fas fa-caret-down first"></span>
+                    </a>
+                    <ul class="feat-show">
+                      <li><a href="newonline_course.html">Online Courses</a></li>
+                      <li><a href="newoffline_course.html">Classroom Training</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Contact Us</a></li>
+                <li>
+                    <a href="#" class="serv-btn">Login
+                        <span class="fas fa-caret-down second"></span>
+                    </a>
+                    <ul class="serv-show">
+                        <li><a href="#">Company</a></li>
+                        <li><a href="#">Student</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+        <div id="logo"><img src="https://assets.interntheory.com/creative/logo.png" alt=""></div>
+        <div id="iclass"><a href="newcart.html"><i class="fa fa-shopping-cart" style="font-size:36px"></i></a></div>
+        <div id="btn">
+            <input type="button"  id="sign" value="SIGN IN">
+        </div>
+    </div>
+    
+    <!--- ----Sidebar ----Done --->
+
+    <div id="oooo"></div>
+
+    <div id="selectbar">
+        <form id="form">
+          <select name="select" id="cities" multiple multiselect-search="true">
+            <option value="" disabled selected hidden>Cities...</option>
+            <option value="">Bangalaore</option>
+            <option value="">Delhi</option>
+            <option value="">Gurgaon</option>
+            <option value="">Mumbai</option>
+            <option value="">Pune</option>
+            <option value="">Hyderabad</option>
+            <option value="">Kolkata</option>
+            <option value="">Ahmedabad</option>
+            <option value="">Kanpur</option>
+            <option value="">Navi Mumbai</option>
+            <option value="">Chandigarh</option>
+            <option value="">Zirakpur</option>
+            <option value="">Thane</option>
+            <option value="">Chennai</option>
+            <option value="">Aizawk</option>
+            <option value="">Indore</option>
+            <option value="">Kashipur</option>
+            <option value="">Greater Noida</option>
+            <option value="">Noida</option>
+            <option value="">Faridabad</option>
+            <option value="">Ludhiana</option>
+            <option value="">Haldwani</option>
+            <option value="">Achabbal</option>
+            <option value="">Jaipur</option>
+        </select>
+        </form>
+        <form id="form1">
+            <select name="select1" id="cities1" multiple multiselect-search="true">
+              <option value="" disabled selected hidden>Type...</option>
+              <option value="">Full Time Internship</option>
+              <option value="">Part Time Internship</option>
+              <option value="">Work From Home Internship</option>
+          </select>
+          </form>
+    </div>
+    
+    <div id="container">
+        <div id="left">
+            <img src="left.jpg" alt="">
+        </div>
+        <div id="right">
+        </div>
+    </div>
+
+
+
+    <footer>   
+      <div class="contentFoot">
+          <div class="footb1">
+             
+              <div class="info">
+                  <div>
+                      <div>BY PLACE</div>
+                      <hr>
+                      <div>Internships In Mumbai</div>
+                      <div>Internships In Delhi</div>
+                      <div>Internships In Bangalore</div>
+                      <div>Internships In Pune</div>
+                      <div>Internships In Hyderabad</div>
+                  </div>
+                  <div>
+                      <div>BY PROFILE</div>
+                      <hr>
+                      <div>Marketing Internships</div>
+                      <div>Business Development Internships</div>
+                      <div>Content Writing Interships</div>
+                      <div>Graphic Design Internships</div>
+                      <div>HR internships</div>
+                      <div>Engineering Internships</div>
+                  </div>
+                  <div>
+                      <div>BY TYPE</div>
+                      <hr>
+                      <div>Full Time Internships</div>
+                      <div>Part Time Internships</div>
+                      <div>Work From Home Internships</div>
+                  </div>
+              </div>
+          </div>
+          <div class="footb2">
+              <div>REFUND & CANCELLATION POLICY</div>
+              <div>Courses</div>
+              <div>Terms&Conditions</div>
+              <div>Privacy Policy</div>
+              <div>Contact us</div>
+              <div>About us</div>
+              <div>SITEMAP</div>
+          </div>
+          <hr>
+          <div class="footb3">
+            © 2015 - 2022 INTERNTHEORY. ALL RIGHTS RESERVED.
+          </div>
+      </div>
+    </footer>   
+  
+
+
+
+</body>
+</html>
+
+<script>
+    $('.btn').click(function(){
+        $(this).toggleClass('click')
+        $('.sidebar').toggleClass('show')
+    })
+    $('.feat-btn').click(function(){
+        $('nav ul .feat-show').toggleClass("show");
+        $('nav ul .first').toggleClass("rotate");
+    })
+    $('.serv-btn').click(function(){
+        $('nav ul .serv-show').toggleClass("show1");
+        $('nav ul .second').toggleClass("rotate");
+    })
+
+
+
+    // sidebar ------------------------------------ended
+
+
+    let user = JSON.parse(localStorage.getItem("userdata"));
+
+if(user!=null)
+{
+  document.querySelector("#btn").innerHTML=`<a href="profile.html"><h2>Hi, ${user[0].firstname}</h2></a>`
+}
+else{
+  alert("Please Create an account first")
+}
+
+
+
+
+    var internobj=[
+    {
+        image:"https://assets.interntheory.com/uploads/company/companylogos/be02b6cd79b216cc36903d48ee57bf3d0cd57886/9b967ae30bee37de14cc21840db0613b5dd52aadcom.jpg",
+        title:"Event Management and Marketing",
+        tag:"Partystarters",
+        desc:"Full Time Internship",
+        type:"Event Management and Marketing",
+        place:"Mumbai",
+        stipend:"Stipend: 2500 - 5000 per month",
+        left:"4 weeks left"
+    },
+    {
+        image:"https://assets.interntheory.com/uploads/company/logos/bdcbf6704bbfbf34d0705fe83d64540e7e2a1a57.jpg",
+        title:"Operations & Backoffice",
+        tag:"Employee crossings",
+        desc:"Full Time Internship",
+        type:"Data Entry",
+        place:"Thane",
+        stipend:"Stipend: 10000 per month",
+        left:"4 weeks left"
+    },
+    {
+        image:"https://assets.interntheory.com/uploads/company/logos/dec6627e07033fe66229268586e8a1a11fca57ce.jpg",
+        title:"Business Strategy Intern",
+        tag:"Mingout Social Technologies Ltd.",
+        desc:"Full Time Internship,Work From Home Internship",
+        type:"Business Strategy",
+        place:"Gurgaon,Delhi",
+        stipend:"Stipend: 5000 per month",
+        left:"3 weeks left"
+    },
+    {
+        image:"https://assets.interntheory.com/uploads/company/logos/6b361060eea36ca28346f57efae2392d124b54db.jpg",
+        title:"Digital Marketing Intern",
+        tag:"The Digital Walrus",
+        desc:"Full Time Internship,Part Time Internship,Work From Home Internship",
+        type:"Digital Marketing",
+        place:"Jaipur",
+        stipend:"Stipend: 5000 - 8000 per month",
+        left:"3 weeks left"
+    },
+    {
+        image:"https://assets.interntheory.com/uploads/company/logos/36e891e73e1a3a143032f938c3c5cfedf893180d.jpg",
+        title:"HR Intern",
+        tag:"Vinosha portfolio Pvt Ltd",
+        desc:"Part Time Internship,Work From Home Internship",
+        type:"Human Resources",
+        place:"Noida",
+        stipend:"Stipend: 7000 per sale",
+        left:"3 weeks left"
+    },
+    {
+        image:"https://assets.interntheory.com/uploads/company/logos/899799e892ae1216b240c0f71d54d624e7613f77.jpg",
+        title:"Digital Marketing Intern",
+        tag:"BitClass",
+        desc:"Full Time Internship",
+        type:"Digital Marketing",
+        place:"Bangalore",
+        stipend:"Stipend: 10000 per month",
+        left:"3 weeks left"
+    },
+    {
+        image:"https://assets.interntheory.com/uploads/company/logos/6c0a3b959003ddb8e782d29244401adfea28a06d.jpg",
+        title:"Social Media internship",
+        tag:"Gokrazee Innovations Private Limited",
+        desc:"Part Time Internship,Work From Home Internship",
+        type:"Social Media",
+        place:"Mumbai,Delhi,Kolkata,Ahmedabad,Chennai,Bangalore,Hyderabad,Pune",
+        stipend:"Stipend: 5000 per month",
+        left:"3 weeks left"
+    },
+    {
+        image:"https://assets.interntheory.com/uploads/company/logos/6c0a3b959003ddb8e782d29244401adfea28a06d.jpg",
+        title:"Social Media Intern - Instagram",
+        tag:"Gokrazee Innovations Private Limited",
+        desc:"Work From Home Internship,Part Time Internship",
+        type:"Social Media",
+        place:"Mumbai,Delhi,Kolkata,Ahmedabad,Chennai,Bangalore,Hyderabad,Pune",
+        stipend:"Stipend: 5000 per month",
+        left:"3 weeks left"
+    },
+    {
+        image:"https://assets.interntheory.com/uploads/company/logos/eaa8b3215ca12ea7071c6a90ac15c3f9bfc82f7e.jpg",
+        title:"Campus Ambassador",
+        tag:"Quirky Writers Media",
+        desc:"Part Time Internship,Work From Home Internship",
+        type:"Campus Ambassador",
+        place:"Mumbai",
+        stipend:"Stipend: None",
+        left:"3 weeks left"
+    },
+    {
+        image:"https://assets.interntheory.com/uploads/company/logos/0abdb05467670aa78918c0fb8ce15978d1ebca12.jpg",
+        title:"Globe Capital",
+        tag:"Globe capital",
+        desc:"Part Time Internship",
+        type:"Marketing & Finance",
+        place:"Thane",
+        stipend:"Stipend: 1000 - 1000 per month",
+        left:"2 weeks left"
+    },
+    {
+        image:"https://assets.interntheory.com/uploads/company/logos/476f155a563c3c617f6fbbdab28f81d83d15df3b.jpg",
+        title:"Digital Media Intern",
+        tag:"Khadi Prakritik Paint",
+        desc:"Work From Home Internship",
+        type:"Content Writing",
+        place:"Indore,Delhi,Pune,Bangalore,Achabbal",
+        stipend:"Stipend: None",
+        left:"2 weeks left"
+    },
+    {
+        image:"https://assets.interntheory.com/uploads/company/logos/5b2ff34b8bdf6db1cfa962af3f5417158f66cce4.jpg",
+        title:"Digital Marketing",
+        tag:"Kleenco On Demand Services Pvt Ltd",
+        desc:"Full Time Internship",
+        type:"Digital Marketing",
+        place:"Bangalore",
+        stipend:"Stipend: 10000 per month",
+        left:"2 weeks left"
+    },
+    {
+        image:"https://assets.interntheory.com/uploads/company/logos/5b2ff34b8bdf6db1cfa962af3f5417158f66cce4.jpg",
+        title:"Customer Support",
+        tag:"Kleenco On Demand Services Pvt Ltd",
+        desc:"Full Time Internship",
+        type:"Customer Relationship Management",
+        place:"Bangalore",
+        stipend:"Stipend: 10000 per month",
+        left:"2 weeks left"
+    },
+    {
+        image:"https://assets.interntheory.com/uploads/company/logos/8e8fc086c6b00a17bda7673163382b99ffa79699.jpg",
+        title:"Android app Developer Intern",
+        tag:"Sparks To Ideas",
+        desc:"Full Time Internship",
+        type:"App Design And Development",
+        place:"Ahmedabad",
+        stipend:"Stipend: 3000 - 15000 per month",
+        left:"2 weeks left"
+    },
+    {
+        image:"https://assets.interntheory.com/uploads/company/logos/ea5231e0aee732516616e42a75c3524d2c90e622.jpg",
+        title:"Digital Marketing Internship",
+        tag:"As Webworks",
+        desc:"Full Time Internship",
+        type:"Digital Marketing",
+        place:"Ludhiana",
+        stipend:"Stipend: Expenses Covered",
+        left:"2 weeks left"
+    },
+    {
+        image:"https://assets.interntheory.com/uploads/company/logos/958387b9860bb4701a0a4596a6821b4607624153.jpg",
+        title:"BUSINESS DEV EXE Intern",
+        tag:"Sailani Tours N Travel",
+        desc:"Full Time Internship",
+        type:"Hospitality",
+        place:"Mumbai,Kolkata",
+        stipend:"Stipend: 5000 per month",
+        left:"2 weeks left"
+    },
+    {
+        image:"https://assets.interntheory.com/uploads/company/companylogos/be02b6cd79b216cc36903d48ee57bf3d0cd57886/9b967ae30bee37de14cc21840db0613b5dd52aadcom.jpg",
+        title:"Event Management and Marketing",
+        tag:"Partystarters",
+        desc:"Full Time Internship",
+        type:"Event Management and Marketing",
+        place:"Mumbai",
+        stipend:"Stipend: 2500 - 5000 per month",
+        left:"4 weeks left"
+    },
+    {
+        image:"https://assets.interntheory.com/uploads/company/logos/bdcbf6704bbfbf34d0705fe83d64540e7e2a1a57.jpg",
+        title:"Operations & Backoffice",
+        tag:"Employee crossings",
+        desc:"Full Time Internship",
+        type:"Data Entry",
+        place:"Thane",
+        stipend:"Stipend: 10000 per month",
+        left:"4 weeks left"
+    },
+    {
+        image:"https://assets.interntheory.com/uploads/company/logos/dec6627e07033fe66229268586e8a1a11fca57ce.jpg",
+        title:"Business Strategy Intern",
+        tag:"Mingout Social Technologies Ltd.",
+        desc:"Full Time Internship,Work From Home Internship",
+        type:"Business Strategy",
+        place:"Gurgaon,Delhi",
+        stipend:"Stipend: 5000 per month",
+        left:"3 weeks left"
+    },
+    {
+        image:"https://assets.interntheory.com/uploads/company/logos/6b361060eea36ca28346f57efae2392d124b54db.jpg",
+        title:"Digital Marketing Intern",
+        tag:"The Digital Walrus",
+        desc:"Full Time Internship,Part Time Internship,Work From Home Internship",
+        type:"Digital Marketing",
+        place:"Jaipur",
+        stipend:"Stipend: 5000 - 8000 per month",
+        left:"3 weeks left"
+    },
+    {
+        image:"https://assets.interntheory.com/uploads/company/logos/36e891e73e1a3a143032f938c3c5cfedf893180d.jpg",
+        title:"HR Intern",
+        tag:"Vinosha portfolio Pvt Ltd",
+        desc:"Part Time Internship,Work From Home Internship",
+        type:"Human Resources",
+        place:"Noida",
+        stipend:"Stipend: 7000 per sale",
+        left:"3 weeks left"
+    },
+    {
+        image:"https://assets.interntheory.com/uploads/company/logos/899799e892ae1216b240c0f71d54d624e7613f77.jpg",
+        title:"Digital Marketing Intern",
+        tag:"BitClass",
+        desc:"Full Time Internship",
+        type:"Digital Marketing",
+        place:"Bangalore",
+        stipend:"Stipend: 10000 per month",
+        left:"3 weeks left"
+    },
+    {
+        image:"https://assets.interntheory.com/uploads/company/logos/6c0a3b959003ddb8e782d29244401adfea28a06d.jpg",
+        title:"Social Media internship",
+        tag:"Gokrazee Innovations Private Limited",
+        desc:"Part Time Internship,Work From Home Internship",
+        type:"Social Media",
+        place:"Mumbai,Delhi,Kolkata,Ahmedabad,Chennai,Bangalore,Hyderabad,Pune",
+        stipend:"Stipend: 5000 per month",
+        left:"3 weeks left"
+    },
+    {
+        image:"https://assets.interntheory.com/uploads/company/logos/6c0a3b959003ddb8e782d29244401adfea28a06d.jpg",
+        title:"Social Media Intern - Instagram",
+        tag:"Gokrazee Innovations Private Limited",
+        desc:"Work From Home Internship,Part Time Internship",
+        type:"Social Media",
+        place:"Mumbai,Delhi,Kolkata,Ahmedabad,Chennai,Bangalore,Hyderabad,Pune",
+        stipend:"Stipend: 5000 per month",
+        left:"3 weeks left"
+    },
+    {
+        image:"https://assets.interntheory.com/uploads/company/logos/eaa8b3215ca12ea7071c6a90ac15c3f9bfc82f7e.jpg",
+        title:"Campus Ambassador",
+        tag:"Quirky Writers Media",
+        desc:"Part Time Internship,Work From Home Internship",
+        type:"Campus Ambassador",
+        place:"Mumbai",
+        stipend:"Stipend: None",
+        left:"3 weeks left"
+    },
+    {
+        image:"https://assets.interntheory.com/uploads/company/logos/0abdb05467670aa78918c0fb8ce15978d1ebca12.jpg",
+        title:"Globe Capital",
+        tag:"Globe capital",
+        desc:"Part Time Internship",
+        type:"Marketing & Finance",
+        place:"Thane",
+        stipend:"Stipend: 1000 - 1000 per month",
+        left:"2 weeks left"
+    },
+    {
+        image:"https://assets.interntheory.com/uploads/company/logos/476f155a563c3c617f6fbbdab28f81d83d15df3b.jpg",
+        title:"Digital Media Intern",
+        tag:"Khadi Prakritik Paint",
+        desc:"Work From Home Internship",
+        type:"Content Writing",
+        place:"Indore,Delhi,Pune,Bangalore,Achabbal",
+        stipend:"Stipend: None",
+        left:"2 weeks left"
+    },
+    {
+        image:"https://assets.interntheory.com/uploads/company/logos/5b2ff34b8bdf6db1cfa962af3f5417158f66cce4.jpg",
+        title:"Digital Marketing",
+        tag:"Kleenco On Demand Services Pvt Ltd",
+        desc:"Full Time Internship",
+        type:"Digital Marketing",
+        place:"Bangalore",
+        stipend:"Stipend: 10000 per month",
+        left:"2 weeks left"
+    },
+    {
+        image:"https://assets.interntheory.com/uploads/company/logos/5b2ff34b8bdf6db1cfa962af3f5417158f66cce4.jpg",
+        title:"Customer Support",
+        tag:"Kleenco On Demand Services Pvt Ltd",
+        desc:"Full Time Internship",
+        type:"Customer Relationship Management",
+        place:"Bangalore",
+        stipend:"Stipend: 10000 per month",
+        left:"2 weeks left"
+    },
+    {
+        image:"https://assets.interntheory.com/uploads/company/logos/8e8fc086c6b00a17bda7673163382b99ffa79699.jpg",
+        title:"Android app Developer Intern",
+        tag:"Sparks To Ideas",
+        desc:"Full Time Internship",
+        type:"App Design And Development",
+        place:"Ahmedabad",
+        stipend:"Stipend: 3000 - 15000 per month",
+        left:"2 weeks left"
+    },
+    {
+        image:"https://assets.interntheory.com/uploads/company/logos/ea5231e0aee732516616e42a75c3524d2c90e622.jpg",
+        title:"Digital Marketing Internship",
+        tag:"As Webworks",
+        desc:"Full Time Internship",
+        type:"Digital Marketing",
+        place:"Ludhiana",
+        stipend:"Stipend: Expenses Covered",
+        left:"2 weeks left"
+    },
+    {
+        image:"https://assets.interntheory.com/uploads/company/logos/958387b9860bb4701a0a4596a6821b4607624153.jpg",
+        title:"BUSINESS DEV EXE Intern",
+        tag:"Sailani Tours N Travel",
+        desc:"Full Time Internship",
+        type:"Hospitality",
+        place:"Mumbai,Kolkata",
+        stipend:"Stipend: 5000 per month",
+        left:"2 weeks left"
+    },
+]
+
+// localStorage.setItem("internshipdetails_data", JSON.stringify(internobj));
+
+let oppaiimg = document.createElement("img")
+oppaiimg.setAttribute("src", 'https://cdn.dribbble.com/users/2973561/screenshots/5757826/loading__.gif')
+oppaiimg.style.width="100%"
+oppaiimg.style.height="700px"
+right.append(oppaiimg)
+setTimeout(()=>{
+  display(internobj)
+},4000)
+
+function display(data){
+    right.innerHTML="";
+    data.forEach(function(element){
+
+        let rightdiv=document.createElement('div')
+        rightdiv.setAttribute('id','rightdiv')
+
+        let img=document.createElement('img')
+        img.src=element.image
+        
+        let courses=document.createElement('div')
+        courses.setAttribute('class','courses')
+
+        let title=document.createElement('h3')
+        title.innerText=element.title
+        title.setAttribute("id","one")
+
+        let tag=document.createElement('p')
+        tag.innerText=element.tag
+        tag.setAttribute('id','tag')
+
+        let desc=document.createElement('p')
+        desc.innerText=element.desc
+        desc.setAttribute("id","two")
+        let type=document.createElement('p')
+        type.innerText=element.type
+        type.setAttribute("id","three")
+        let place=document.createElement('p')
+        place.innerText=element.place
+        place.setAttribute("id","four")
+        let stipend=document.createElement('p')
+        stipend.innerText=element.stipend
+        stipend.setAttribute('id','stipend')
+
+        let courseright=document.createElement('div')
+        courseright.setAttribute('id','courseright')
+
+        let left=document.createElement('p')
+        left.innerText=element.left
+
+        let img1=document.createElement('img')
+        img1.src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcVtvhafew1D-bsOucmhBWDr_4WvTW44xRnQ&usqp=CAU"
+
+        let button=document.createElement('button')
+        button.innerText='VIEW AND APPLY'
+        button.addEventListener("click", function(){
+          window.location.href="newonline_course.html"         
+        })
+        button.setAttribute('id','myButton')
+        button.style.cursor="pointer"
+
+        let br=document.createElement('br')
+        let hr=document.createElement('hr')
+        hr.style.margin="auto"
+
+        let rightleft=document.createElement('div')
+        rightleft.setAttribute('id','rightleft')
+
+        courseright.append(left,img1,br,button)
+        
+        courses.append(title,tag,desc,type,place,stipend)
+
+        rightleft.append(courses,courseright)
+
+        rightdiv.append(img,rightleft)
+
+        right.append(rightdiv,hr)
+    })
+}
+
+// document. getElementById("myButton"). onclick = function () {
+// location. href = "courses.html";
+// }
+
+
+// select functionality-------------------------------------------------------------------------------->
+
+var style = document.createElement('style');
+style.setAttribute("id","multiselect_dropdown_styles");
+style.innerHTML = `
+.multiselect-dropdown{
+  display: inline-block;
+  padding: 2px 5px 0px 5px;
+  border-radius: 4px;
+  border: solid 1px #ced4da;
+  background-color: white;
+  position: relative;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right .75rem center;
+  background-size: 16px 12px;
+}
+.multiselect-dropdown span.optext, .multiselect-dropdown span.placeholder{
+  margin-right:0.5em; 
+  margin-bottom:2px;
+  padding:1px 0; 
+  border-radius: 4px; 
+  display:inline-block;
+}
+.multiselect-dropdown span.optext{
+  background-color:lightgray;
+  padding:1px 0.75em; 
+}
+.multiselect-dropdown span.optext .optdel {
+  float: right;
+  margin: 0 -6px 1px 5px;
+  font-size: 0.7em;
+  margin-top: 2px;
+  cursor: pointer;
+  color: #666;
+}
+.multiselect-dropdown span.optext .optdel:hover { color: #c66;}
+.multiselect-dropdown span.placeholder{
+  color:#ced4da;
+}
+.multiselect-dropdown-list-wrapper{
+  box-shadow: gray 0 3px 8px;
+  z-index: 100;
+  padding:2px;
+  border-radius: 4px;
+  border: solid 1px #ced4da;
+  display: none;
+  margin: -1px;
+  position: absolute;
+  top:0;
+  left: 0;
+  right: 0;
+  background: white;
+}
+.multiselect-dropdown-list-wrapper .multiselect-dropdown-search{
+  margin-bottom:5px;
+}
+.multiselect-dropdown-list{
+  padding:2px;
+  height: 15rem;
+  overflow-y:auto;
+  overflow-x: hidden;
+}
+.multiselect-dropdown-list::-webkit-scrollbar {
+  width: 6px;
+}
+.multiselect-dropdown-list::-webkit-scrollbar-thumb {
+  background-color: #bec4ca;
+  border-radius:3px;
+}
+
+.multiselect-dropdown-list div{
+  padding: 5px;
+}
+.multiselect-dropdown-list input{
+  height: 1.15em;
+  width: 1.15em;
+  margin-right: 0.35em;  
+}
+.multiselect-dropdown-list div.checked{
+}
+.multiselect-dropdown-list div:hover{
+  background-color: #ced4da;
+}
+.multiselect-dropdown span.maxselected {width:100%;}
+.multiselect-dropdown-all-selector {border-bottom:solid 1px #999;}
+`;
+document.head.appendChild(style);
+
+function MultiselectDropdown(options){
+  var config={
+    search:true,
+    height:'15rem',
+    placeholder:'select',
+    txtSelected:'selected',
+    txtAll:'All',
+    txtRemove: 'Remove',
+    txtSearch:'search',
+    ...options
+  };
+  function newEl(tag,attrs){
+    var e=document.createElement(tag);
+    if(attrs!==undefined) Object.keys(attrs).forEach(k=>{
+      if(k==='class') { Array.isArray(attrs[k]) ? attrs[k].forEach(o=>o!==''?e.classList.add(o):0) : (attrs[k]!==''?e.classList.add(attrs[k]):0)}
+      else if(k==='style'){  
+        Object.keys(attrs[k]).forEach(ks=>{
+          e.style[ks]=attrs[k][ks];
+        });
+       }
+      else if(k==='text'){attrs[k]===''?e.innerHTML='&nbsp;':e.innerText=attrs[k]}
+      else e[k]=attrs[k];
+    });
+    return e;
+  }
+
+  
+  document.querySelectorAll("select[multiple]").forEach((el,k)=>{
+    
+    var div=newEl('div',{class:'multiselect-dropdown',style:{width:config.style?.width??el.clientWidth+'px',padding:config.style?.padding??''}});
+    el.style.display='none';
+    el.parentNode.insertBefore(div,el.nextSibling);
+    var listWrap=newEl('div',{class:'multiselect-dropdown-list-wrapper'});
+    var list=newEl('div',{class:'multiselect-dropdown-list',style:{height:config.height}});
+    var search=newEl('input',{class:['multiselect-dropdown-search'].concat([config.searchInput?.class??'form-control']),style:{width:'100%',display:el.attributes['multiselect-search']?.value==='true'?'block':'none'},placeholder:config.txtSearch});
+    listWrap.appendChild(search);
+    div.appendChild(listWrap);
+    listWrap.appendChild(list);
+
+    el.loadOptions=()=>{
+      list.innerHTML='';
+      
+      if(el.attributes['multiselect-select-all']?.value=='true'){
+        var op=newEl('div',{class:'multiselect-dropdown-all-selector'})
+        var ic=newEl('input',{type:'checkbox'});
+        op.appendChild(ic);
+        op.appendChild(newEl('label',{text:config.txtAll}));
+  
+        op.addEventListener('click',()=>{
+          op.classList.toggle('checked');
+          op.querySelector("input").checked=!op.querySelector("input").checked;
+          
+          var ch=op.querySelector("input").checked;
+          list.querySelectorAll(":scope > div:not(.multiselect-dropdown-all-selector)")
+            .forEach(i=>{if(i.style.display!=='none'){i.querySelector("input").checked=ch; i.optEl.selected=ch}});
+  
+          el.dispatchEvent(new Event('change'));
+        });
+        ic.addEventListener('click',(ev)=>{
+          ic.checked=!ic.checked;
+        });
+  
+        list.appendChild(op);
+      }
+
+      Array.from(el.options).map(o=>{
+        var op=newEl('div',{class:o.selected?'checked':'',optEl:o})
+        var ic=newEl('input',{type:'checkbox',checked:o.selected});
+        op.appendChild(ic);
+        op.appendChild(newEl('label',{text:o.text}));
+
+        op.addEventListener('click',()=>{
+          op.classList.toggle('checked');
+          op.querySelector("input").checked=!op.querySelector("input").checked;
+          op.optEl.selected=!!!op.optEl.selected;
+          el.dispatchEvent(new Event('change'));
+        });
+        ic.addEventListener('click',(ev)=>{
+          ic.checked=!ic.checked;
+        });
+        o.listitemEl=op;
+        list.appendChild(op);
+      });
+      div.listEl=listWrap;
+
+      div.refresh=()=>{
+        div.querySelectorAll('span.optext, span.placeholder').forEach(t=>div.removeChild(t));
+        var sels=Array.from(el.selectedOptions);
+        if(sels.length>(el.attributes['multiselect-max-items']?.value??5)){
+          div.appendChild(newEl('span',{class:['optext','maxselected'],text:sels.length+' '+config.txtSelected}));          
+        }
+        else{
+          sels.map(x=>{
+            var c=newEl('span',{class:'optext',text:x.text, srcOption: x});
+            if((el.attributes['multiselect-hide-x']?.value !== 'true'))
+              c.appendChild(newEl('span',{class:'optdel',text:'🗙',title:config.txtRemove, onclick:(ev)=>{c.srcOption.listitemEl.dispatchEvent(new Event('click'));div.refresh();ev.stopPropagation();}}));
+
+            div.appendChild(c);
+          });
+        }
+        if(0==el.selectedOptions.length) div.appendChild(newEl('span',{class:'placeholder',text:el.attributes['placeholder']?.value??config.placeholder}));
+      };
+      div.refresh();
+    }
+    el.loadOptions();
+    
+    search.addEventListener('input',()=>{
+      list.querySelectorAll(":scope div:not(.multiselect-dropdown-all-selector)").forEach(d=>{
+        var txt=d.querySelector("label").innerText.toUpperCase();
+        d.style.display=txt.includes(search.value.toUpperCase())?'block':'none';
+      });
+    });
+
+    div.addEventListener('click',()=>{
+      div.listEl.style.display='block';
+      search.focus();
+      search.select();
+    });
+    
+    document.addEventListener('click', function(event) {
+      if (!div.contains(event.target)) {
+        listWrap.style.display='none';
+        div.refresh();
+      }
+    });    
+  });
+}
+
+window.addEventListener('load',()=>{
+  MultiselectDropdown(window.MultiselectDropdownOptions);
+});
+
+let form = document.querySelector("#form")
+
+document.querySelector("#cities").addEventListener("change", getSelectValues)
+
+  let result = [];
+
+function getSelectValues() {
+  let options = form.cities.options;
+  let opt;
+
+  for (let i=0; i<options.length ; i++) {
+    opt = options[i];
+
+    if (opt.selected) {
+      app(opt.innerText);
+    }
+  }
+
+ 
+}
+
+function app(f){
+
+  // console.log(f)
+
+  if(f!="Cities...")
+  {
+  var filterarr = internobj.filter(function(el){
+    return el.place==f;
+  })
+
+  display(filterarr)
+}
+else{
+    display(internobj)
+}
+
+}
+
+
+let form1 = document.querySelector("#form1")
+
+form1.cities1.addEventListener("change", getSelectValues1)
+
+
+function getSelectValues1() {
+  let result = [];
+  let options = form1.cities1.options;
+  let opt;
+
+  for (let i=0; i<options.length ; i++) {
+    opt = options[i];
+
+    if (opt.selected) {
+      result.push(opt.innerText);
+    }
+  }
+  
+    var s = "";
+    var t="";
+            for(var i=1;i<result.length;i++)
+            {
+                if(i!=result.length-1) s+=result[i]+",";
+                else s+=result[i]
+            }
+    console.log(s)
+
+
+  if(s!="Type")
+  {
+  var filterarr = internobj.filter(function(el){
+    return el.desc==s;
+  })
+
+  display(filterarr)
+}
+else{
+    display(internobj)
+}
+if(result.length==1 && result[0]=="Type...")
+{
+    display(internobj)
+}
+
+}
+
+
+
+
+
+
+
+</script>
