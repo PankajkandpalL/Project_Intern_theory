@@ -1,0 +1,201 @@
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.pointer {
+  cursor: pointer;
+}
+.header {
+  background: #555;
+  color: #f1f1f1;
+  height: 64px;
+  box-shadow: 0px 2px 2px -1px rgb(0 0 0 / 20%);
+  background-color: #fff;
+}
+.header > div {
+  display: flex;
+  padding: 8px 24px 8px 1.5rem;
+  height: 48px;
+}
+.header > div > div {
+  height: auto;
+}
+.hb1 {
+  flex: 0 0 56px;
+}
+.hb2 {
+  flex: 0 0 80px;
+}
+.hb2 img {
+  width: 100%;
+}
+.hb3 {
+  flex-grow: 1;
+}
+.hb4 {
+  display: flex;
+  flex: 0 0 12rem;
+}
+.sign {
+  text-decoration: none;
+}
+.sign > div {
+  margin-top: 5px;
+  padding: 10px;
+  padding-left: 12px;
+  background-color: red;
+  color: white;
+  font-size: 1rem;
+  border-radius: 5px;
+  font-weight: 500;
+}
+.sign > div:hover {
+  opacity: 0.7;
+}
+#shopCart,
+.hb1list {
+  width: 1.5rem;
+  height: 1.5rem;
+  padding: 12px;
+  color: black;
+  border-radius: 1.5rem;
+}
+#shopCart {
+  padding: 0px 12px 12px 12px;
+}
+#shopCart > div {
+  height: 12px;
+  width: 1.5rem;
+}
+#shopCart > div > div {
+  height: 1rem;
+  width: 1rem;
+  background-color: red;
+  z-index: 110;
+  border-radius: 1rem;
+  text-align: center;
+  font-weight: 700;
+  font-size: 12px;
+  padding: 2px;
+  display: none;
+}
+.hb1list:hover {
+  background-color: rgba(0, 0, 0, 0.08);
+}
+#shopCart + div {
+  width: 84px;
+  height: 48px;
+}
+.hbside1 {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  width: 300px;
+  height: 750px;
+  position: fixed;
+  display: none;
+}
+.hbside1 > div {
+  width: 300px;
+  height: 750px;
+  background-color: white;
+  z-index: 100;
+  position: fixed;
+
+  box-shadow: 0px 3px 5px -1px rgb(0 0 0 / 20%),
+    0px 5px 8px 0px rgb(0 0 0 / 14%), 0px 1px 14px 0px rgb(0 0 0 / 12%);
+}
+.hb1sidehead {
+  display: flex;
+  padding: 8px 24px 8px 1.5rem;
+}
+.hb1sidehead ~ div {
+  width: 100%;
+  height: 46px;
+  cursor: pointer;
+}
+.hb1sidehead ~ div:hover {
+  background-color: rgba(0, 0, 0, 0.08);
+}
+.hb1sidehead ~ div > a {
+  width: 100%;
+  height: 1.5rem;
+  display: flex;
+  padding: 11px 16px 11px 1rem;
+  text-decoration: none;
+  color: black;
+}
+.hb1sidehead ~ div > a > div {
+  padding-right: 2rem;
+  display: flex;
+  align-items: center;
+}
+.hb1sideheaddivadiv {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.content {
+  padding-top: 64px;
+}
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+.contentFoot {
+  background-color: rgb(54, 80, 96);
+  padding: 2% 10% 2% 10%;
+  color: white;
+  font-size: 14px;
+}
+.contentFoot > div {
+  width: 100%;
+  display: flex;
+}
+.footb1 {
+  justify-content: center;
+  align-items: center;
+}
+.connect {
+  width: 6%;
+  height: 10rem;
+  display: flex;
+  min-width: 3.75rem;
+  flex-direction: column;
+  align-items: center;
+}
+.connect > div {
+  height: 1.875rem;
+  width: auto;
+  padding-top: 10px;
+}
+.info {
+  width: 94%;
+  display: flex;
+  justify-content: space-between;
+  padding-top: 1.25rem;
+}
+.info > div {
+  flex: 30% 0 0;
+}
+.info > div > div {
+  padding: 3px;
+}
+.footb2 {
+  justify-content: space-around;
+  padding-top: 1.25rem;
+}
+.footb3 {
+  justify-content: space-around;
+  text-align: center;
+}
+
+#regCom,
+#regStu,
+#logCom,
+#logStu {
+  display: none;
+}
