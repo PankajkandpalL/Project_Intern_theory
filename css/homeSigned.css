@@ -1,0 +1,26 @@
+.signedUserPr {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: black;
+  z-index: 100;
+}
+.signedUserPr > div {
+  height: 48px;
+  width: 60px;
+  text-align: center;
+}
+.imgLogin {
+  width: 40%;
+  padding-left: 30%;
+  padding-right: 30%;
+}
+.imgLogin > img {
+  width: 100%;
+}
+.logout {
+  width: 60px;
+  height: 60px;
+  border: 1px solid black;
+  display: none;
+}
