@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="./css/styleHeadFoot.css" rel="stylesheet">
+    <link href="./css/homeSigned.css" rel="stylesheet">
+
+    <style>
+        .containerDummy{
+            width: 100%;
+            height: 37.5rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .containerDummy>div{
+            width: 50%;
+            height: 60%;
+            flex-direction: column;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 5%;
+            border: 1px solid rgb(228, 228, 228);
+        }
+        .containerDummy>div>div{
+            text-align: center;
+            font-size: 1.563rem;
+            
+        }
+        .containerDummy>div>div>a{
+            text-decoration: none;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+
+
+    <div class="hbside1" id="hbsideid1">
+        <div>
+            <div class="hb1sidehead">
+                <div class="hb1">
+                    <div class="hb1list pointer" id="openSide"
+                        onclick="document.getElementById('hbsideid1').style.display='none'">
+                        <span class="material-icons">
+                            menu
+                        </span>
+    
+                    </div>
+                </div>
+                <div class="hb2">
+                    <a href="mainPage.html"><img src="https://assets.interntheory.com/creative/logo.png" /></a>
+                </div>
+            </div>
+            <div>
+                <a href="index.html">
+                    <div>
+                        <span class="material-icons">
+                            home
+                        </span>
+                    </div>
+                    <div class="hb1sideheaddivadiv">
+                        Home
+                    </div>
+                </a>
+            </div>
+    
+            <div>
+                <a href="internship.html">
+                    <div>
+                        <span class="material-icons">
+                            view_list
+                        </span>
+                    </div>
+                    <div class="hb1sideheaddivadiv">
+                        Internships
+                    </div>
+                </a>
+            </div>
+            <div>
+                <a href="jobs.html">
+                    <div>
+                        <span class="material-icons">
+                            work
+                        </span>
+                    </div>
+                    <div class="hb1sideheaddivadiv">
+                        Jobs
+                    </div>
+                </a>
+            </div>
+            <div>
+                <a href="internship.html">
+                    <div>
+                        <span class="material-icons">
+                            playlist_add
+                        </span>
+    
+                    </div>
+                    <div class="hb1sideheaddivadiv">
+                        Post Internships
+                    </div>
+                </a>
+            </div>
+            <div>
+                <a href="newonline_course.html">
+                    <div>
+                        <span class="material-icons">
+                            class
+                        </span>
+                    </div>
+                    <div class="hb1sideheaddivadiv">
+                        Courses
+                    </div>
+                </a>
+            </div>
+            <div>
+                <a href="contact.html">
+                    <div>
+                        <span class="material-icons">
+                            call
+                        </span>
+                    </div>
+                    <div class="hb1sideheaddivadiv">
+                        Contact Us
+                    </div>
+                </a>
+            </div>
+            <hr>
+            <div onclick="toggleRegister()">
+                <a>
+                    <div>
+                        <span class="material-icons">
+                            subject
+                        </span>
+                    </div>
+                    <div class="hb1sideheaddivadiv">
+                        Register
+                    </div>
+                </a>
+            </div>
+            <div id="regCom">
+                <a href="signupp.html">
+                    <div>
+                        <span class="material-icons">
+                            business
+                        </span>
+                    </div>
+                    <div class="hb1sideheaddivadiv">
+                        Company
+                    </div>
+                </a>
+            </div>
+            <div id="regStu">
+                <a href="signupp.html">
+                    <div>
+                        <span class="material-icons">
+                            person
+                        </span>
+                    </div>
+                    <div class="hb1sideheaddivadiv">
+                        Student
+                    </div>
+                </a>
+            </div>
+            <div onclick="toggleLogin()">
+                <a>
+                    <div>
+                        <span class="material-icons">
+                            meeting_room
+                        </span>
+                    </div>
+                    <div class="hb1sideheaddivadiv">
+                        Login
+                    </div>
+                </a>
+            </div>
+            <div id="logCom">
+                <a href="loggin.html">
+                    <div>
+                        <span class="material-icons">
+                            business
+                        </span>
+                    </div>
+                    <div class="hb1sideheaddivadiv">
+                        Company
+                    </div>
+                </a>
+            </div>
+            <div id="logStu">
+                <a href="loggin.html">
+                    <div>
+                        <span class="material-icons">
+                            person
+                        </span>
+                    </div>
+                    <div class="hb1sideheaddivadiv">
+                        Student
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="header sticky" id="myHeader">
+        <div>
+            <div class="hb1">
+                <div class="hb1list pointer" onclick="document.getElementById('hbsideid1').style.display='block'">
+                    <span class="material-icons">
+                        menu
+                    </span>
+    
+                </div>
+            </div>
+            <div class="hb2">
+                <a href="mainPage.html"><img src="https://assets.interntheory.com/creative/logo.png" /></a>
+            </div>
+            <div class="hb3"></div>
+            <div class="hb4">
+                <div id="shopCart" class="pointer">
+                    <div>
+                        <div id="cartNum">1</div>
+                    </div>
+                    <span class="material-icons">
+                        shopping_cart
+                    </span>
+    
+    
+                </div>
+                <div class="signedUserPr">
+                    <div>
+                        <div class="imgLogin"><img
+                                src="https://www.clipartmax.com/png/middle/269-2691367_user-login-person-man-enter-comments-logo.png">
+                        </div>
+                        <div>LogedIn</div>
+                        <div class="logout"></div>
+                    </div>
+                </div>
+    
+            </div>
+        </div>
+    </div>
+
+    <div class="content" id="con1">
+        <div class="containerDummy">
+            <div>
+                <img src="https://cdn.dribbble.com/users/176039/screenshots/5484224/courses-goodhabitz-wevoke-dribbble-01.gif" style='width:300px'>
+                <div>Congragulations!<br> All the courses will be added to your account shortly. Do checkout the blogs and other courses in the <a href="index.html">Home Page</a></div>
+                <div></div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <div class="contentFoot">
+        <div class="footb1">
+            <div class="connect">
+                <div><span class="material-icons">
+                        facebook
+                    </span>
+                </div>
+                <div><span class="material-icons">
+                        facebook
+                    </span>
+                </div>
+                <div><span class="material-icons">
+                        facebook
+                    </span>
+                </div>
+                <div><span class="material-icons">
+                        facebook
+                    </span>
+                </div>
+
+            </div>
+            <div class="info">
+                <div>
+                    <div>BY PLACE</div>
+                    <hr>
+                    <div>Internships In Mumbai</div>
+                    <div>Internships In Delhi</div>
+                    <div>Internships In Bangalore</div>
+                    <div>Internships In Pune</div>
+                    <div>Internships In Hyderabad</div>
+                </div>
+                <div>
+                    <div>BY PROFILE</div>
+                    <hr>
+                    <div>Marketing Internships</div>
+                    <div>Business Development Internships</div>
+                    <div>Content Writing Interships</div>
+                    <div>Graphic Design Internships</div>
+                    <div>HR internships</div>
+                    <div>Engineering Internships</div>
+                </div>
+                <div>
+                    <div>BY TYPE</div>
+                    <hr>
+                    <div>Full Time Internships</div>
+                    <div>Part Time Internships</div>
+                    <div>Work From Home Internships</div>
+                </div>
+            </div>
+        </div>
+        <div class="footb2">
+            <div>Find Intership</div>
+            <div>Post Intership</div>
+            <div>Courses</div>
+            <div>Terms&Conditions</div>
+            <div>Privacy Polivy</div>
+            <div>Contact us</div>
+            <div>About us</div>
+            <div>Site us</div>
+        </div>
+        <hr>
+        <div class="footb3">
+            © 2015 - 2021 INTERNTHEORY. ALL RIGHTS RESERVED.
+        </div>
+
+    </div>
+
+
+
+
+
+
+
+</body>
+
+</html>
+<script>
+
+function go() {
+    window.location.href = "internship.html";
+
+}
+
+
+function storeCity() {
+    var x = document.getElementById("city").value;
+    console.log(x);
+    let arr;
+    arr = localStorage.getItem('sortItems');
+    if (arr == null) {
+        arr = [];
+    } else {
+        arr = JSON.parse(localStorage.getItem('sortItems'));
+    }
+
+    if (arr.includes(x)) return;
+    arr.push(x);
+    localStorage.setItem('sortItems', JSON.stringify(arr));
+
+
+
+    let arr1;
+    arr1 = localStorage.getItem('sortCity');
+    if (arr1 == null) {
+        arr1 = [];
+    } else {
+        arr1 = JSON.parse(localStorage.getItem('sortCity'));
+    }
+
+    if (arr1.includes(x)) return;
+    arr1.push(x);
+    localStorage.setItem('sortCity', JSON.stringify(arr1));
+    go();
+}
+
+
+function storeType() {
+    var x = document.getElementById("type").value;
+    console.log(x);
+    let arr;
+    arr = localStorage.getItem('sortItems');
+    if (arr == null) {
+        arr = [];
+    } else {
+        arr = JSON.parse(localStorage.getItem('sortItems'));
+    }
+
+    if (arr.includes(x)) return;
+    arr.push(x);
+    localStorage.setItem('sortItems', JSON.stringify(arr));
+
+
+
+    let arr1;
+    arr1 = localStorage.getItem('sortType');
+    if (arr1 == null) {
+        arr1 = [];
+    } else {
+        arr1 = JSON.parse(localStorage.getItem('sortType'));
+    }
+
+    if (arr1.includes(x)) return;
+    arr1.push(x);
+    localStorage.setItem('sortType', JSON.stringify(arr1));
+    go();
+
+}
+
+function storePref() {
+    var x = document.getElementById("pref").value;
+    console.log(x);
+    let arr;
+    arr = localStorage.getItem('sortItems');
+    if (arr == null) {
+        arr = [];
+    } else {
+        arr = JSON.parse(localStorage.getItem('sortItems'));
+    }
+
+    if (arr.includes(x)) return;
+    arr.push(x);
+    localStorage.setItem('sortItems', JSON.stringify(arr));
+
+
+
+    let arr1;
+    arr1 = localStorage.getItem('sortPref');
+    if (arr1 == null) {
+        arr1 = [];
+    } else {
+        arr1 = JSON.parse(localStorage.getItem('sortPref'));
+    }
+
+    if (arr1.includes(x)) return;
+    arr1.push(x);
+    localStorage.setItem('sortPref', JSON.stringify(arr1));
+    go();
+
+}
+
+var i = 0;
+var j = 0;
+
+function toggleRegister() {
+    i++;
+    var div1 = document.getElementById("regCom");
+    var div2 = document.getElementById("regStu");
+    if (i % 2 == 1) {
+        div1.style.display = "block";
+        div2.style.display = "block";
+    } else {
+        div1.style.display = "none";
+        div2.style.display = "none";
+    }
+
+}
+
+function toggleLogin() {
+    j++;
+    var div1 = document.getElementById("logCom");
+    var div2 = document.getElementById("logStu");
+    if (j % 2 == 1) {
+        div1.style.display = "block";
+        div2.style.display = "block";
+    } else {
+        div1.style.display = "none";
+        div2.style.display = "none";
+    }
+}
+
+
+</script>

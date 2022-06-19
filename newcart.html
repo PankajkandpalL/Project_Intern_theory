@@ -1,0 +1,1110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<style>
+
+*{
+        margin: 0;
+        padding: 0;
+        /* color: whitesmoke; */
+        user-select: none;
+        box-sizing: border-box;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    }
+    .sidebar{
+        position: fixed;
+        width: 250px;
+        left: -250px;
+        background-color: #fcf9f9;
+        height: 100%;
+        transition: left 0.4s ease;
+    }
+    .sidebar .text{
+        padding-top: 10px;
+        color: rgb(13, 13, 13);
+        font-size: 25px;
+        font-weight: 600;
+        line-height: 65px;
+        text-align: center;
+        background: #f3efef;
+        padding-top: 10px;
+        letter-spacing: 1px;
+    }
+    nav ul{
+        background: #dcd9d9;
+        height: 100%;
+        width: 100%;
+        list-style: none;
+    }
+    nav ul li{
+        line-height: 60px;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    nav ul li a{
+        position: relative;
+        color: rgb(2, 2, 2);
+        text-decoration: none;
+        font-size: 18px;
+        padding-left: 40px;
+        font-weight: 500;
+        display: block;
+        width: 100%;
+        border-left: 3px solid transparent;
+        transition: all 700ms linear;
+    }
+    nav ul li a:hover{
+        color: rgb(52, 55, 55);
+        background: #b9dcde;
+        border-left-color: cyan;
+    }
+    nav ul ul{
+        position: static;
+        display: none;
+    }
+    nav ul .feat-show.show{
+        display: block;
+    }
+    nav ul .serv-show.show1{
+        display: block;
+    }
+    nav ul ul li{
+        line-height: 42px;
+        border-bottom: none;
+    }
+    nav ul ul li a{
+        font-size: 17px;
+        color: #232222;
+        padding-left: 80px;
+    }
+    nav ul li a span{
+        position: absolute;
+        color: rgb(7, 21, 66);
+        top: 48%;
+        right: 20px;
+        font-size: 20px;
+        transform: translateY(-50%);
+        transition: transform 0.4s;
+    }
+    nav ul li a span.rotate{
+        transform: translateY(-50%) rotate(-180deg);
+    }
+    .btn{
+        position: absolute;
+        top: 15px;
+        left: 15px;
+        height: 45px;
+        text-align: center;
+        border-radius: 50%;
+        cursor: pointer;
+        width: 45px;
+        background: #f6f3f3;
+        transition: left 0.4s ease;
+    }
+    .btn:hover{
+        background: #f6f3f3;
+    }
+    .sidebar.show{
+        left: 0px;
+    }
+    .btn.click span:before{
+        content: '\f00d';
+    }
+    .btn.click{
+        left: 260px;
+    }
+    .btn span{
+        color: rgb(0, 0, 0);
+        font-size: 22px;
+        line-height: 45px;
+    }
+    img{
+        height: 40px;
+        width: 100px;
+    }
+    #mainnav{
+        height: 70px;
+        width: 100%;
+        /* border: 1px solid red; */
+        box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+        position: fixed;
+        background-color: white;
+        z-index: 999;
+    }
+    #logo>img{
+        margin-top: 15px;
+        margin-left: 100px;
+        width: 70px;
+    }
+    #btn{
+        position: absolute;
+        right: 40px;
+        top: 15px;
+    }
+    #sign{
+        height: 40px;
+        color: white;
+        border: red;
+        border: 1px solid red;
+        background-color: rgb(224, 17, 17);
+        width: 95px;
+        border-radius: 5px;
+        font-size: 15px;
+    }
+
+    #iclass{
+      top: 15px;
+      position: absolute;
+      right: 170px;
+    }
+
+    *{
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    color: rgb(70, 68, 68);
+}
+
+body{
+    background-color: rgb(247, 244, 239);
+    /* z-index: -1; */
+}
+
+/* left side of the cart page */
+#Cart_Details{
+    margin: auto;
+    width: 80%;
+    box-shadow: 0px 2px 2px 0px rgb(0 0 0 / 22%);
+    padding: 30px;
+    padding-top: 150px;
+    /* margin-top: 40px; */
+    background-color: white;
+    position: relative;
+    /* z-index: -1; */
+}
+#content{
+    display: flex;
+    justify-content: space-between;
+}
+#container{
+    width: 70%;
+    border-right: 0.5px solid grey;
+}
+section>div{
+    display: flex;
+    /* border: 1px solid red; */
+    padding: 5px;
+    border-bottom: 0.5px dashed grey;
+    height: 70px;
+    justify-content: space-between;
+}
+/* section>div>div{
+    display: flex;
+    margin-left: 200px;
+    justify-content: space-around;
+    border: 1px solid red;
+    width: auto;
+} */
+img{
+    height: 50px;
+    height: 50px;
+}
+.abc{
+    display: flex;
+    margin-right: 40px;
+    gap: 5px;
+}
+.abc>p:first-child{
+    text-decoration: line-through;
+}
+section>div>div>button{
+    background: transparent;
+}
+
+
+/* wright side of the page */
+.price{
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 0.5px solid grey;
+    margin-bottom: 20px;
+}
+.total{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+#coupon{
+    margin-top: 40px;
+    margin-bottom: 10px;
+}
+input{
+    width: 100%;
+    border: none;
+    outline: none;
+    border-bottom: 0.5px solid grey;
+    margin-bottom: 0.5px;
+}
+#coupon>button{
+    padding: 9px 25px 9px 20px;
+    background-color: red;
+    color: white;
+    border-radius: 5px;
+}
+#checkout{
+    margin: auto;
+}
+#checkout>button{
+    width: 96%;
+    color: white;
+    background-color: red;
+    border-radius: 5px;
+    padding: 8px 16px;
+    box-shadow: 0px 1px 5px 0px rgb(0 0 0 / 20%), 0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 3px 1px -2px rgb(0 0 0 / 12%)
+}
+#emi{
+    margin-top: 10px;
+}
+#emi>button{
+    background-color: white;
+    color: rgb(255, 179, 38);
+    font-weight: bold;
+    font-size: 15px;
+    border: none;
+    
+}
+
+button{
+    border: none;
+    cursor: pointer;
+}
+
+
+/* pop up payment methods */
+
+#popup{
+    width: auto;
+    height: auto;
+    position: absolute;
+    /* display: flex; */
+    /* margin: auto; */
+    margin-top: -25%;
+    margin-left: 30%;
+    padding: 30px;
+    border-radius: 10px;
+    padding-bottom: 50px;
+    background-color: white;
+    box-shadow: 0px 11px 15px -7px rgb(0 0 0 / 20%), 0px 24px 38px 3px rgb(0 0 0 / 14%), 0px 9px 46px 8px rgb(0 0 0 / 12%);
+    /* z-index: 1; */
+    visibility: hidden;
+}
+
+#popup>div>h2{
+    color: grey;
+    line-height: 1;
+    /* /* font-family: "Roboto", "Helvetica", "Arial", sans-serif; */
+    font-weight: 200; 
+}
+#payment_methode{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 15px;
+}
+.methods{
+    border-radius: 5px;
+}
+.methods>button{
+    height: 40px;
+    width: 240px;
+    border: 0.5px solid #087cdd;
+    color: #087cdd;
+    background-color: white;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+/* 2nd pop up */
+
+#description{
+    padding-left: 20px;
+    background-color: #df1e2e;
+    
+}
+#description>h3,h5{
+    color: white;
+}
+#description>div{
+    color: white;
+}
+
+#popup2{
+    position: absolute;
+    margin-top: -30%;
+    margin-left: 40%;
+    overflow: scroll;
+    /* padding: 30px; */
+    padding-bottom: 50px;
+    height: 80%;
+    width: 350px;
+    background-color: white;
+    box-shadow: 0px 11px 15px -7px rgb(0 0 0 / 20%), 0px 24px 38px 3px rgb(0 0 0 / 14%), 0px 9px 46px 8px rgb(0 0 0 / 12%);
+    visibility: hidden;
+    /* z-index: -1; */
+}
+#popup2>div:nth-child(2){
+    padding: 30px;
+    margin: auto;
+}
+.methods2>button{
+    height: 40px;
+    width: 100%;
+    border: 0.5px solid grey;
+    background-color: white;
+    border-radius: 5px;
+    display: flex;
+    /* justify-content: space-between; */
+    align-items: center;
+
+}
+i>img{
+    height: 20px;
+    width: 20px;
+    margin-right: 3px;
+
+}
+button>div{
+    font-size: 18px;
+}
+
+
+
+/* wallet */
+
+body
+{
+    font-family: "Clear Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+.container
+{
+    border: 1px solid #d0cece;
+    padding: 10px 20px 10px 20px;
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    cursor: pointer;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: 1px solid grey;
+}
+.container2
+{
+    display: flex;
+    /* width: 100%; */
+    height: 40px;
+    align-items: center;
+}
+.container2>img
+{
+    /* height: 30px; */
+    width: 44px;
+}
+.container2>span
+{
+    color: rgba(33,33,33,.87);
+    font-weight: 700;
+    margin-left: 20px;
+    font-size: 17px;
+}
+.container>p
+{
+    color: green;
+    font-size: 13px;
+    margin-top: 20px;
+}
+
+/* UPI */
+
+#submain {
+    width: 100%;
+    height: 100%;
+    padding: 8px;
+    /* margin-top: 20px;
+    margin-left: 20px; */
+    font-family: "Clear Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    /* box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px; */
+}
+
+#submain>div:first-child>h3 {
+    margin: 0%;
+    font-size: 15px;
+}
+
+#submain>div:nth-child(2) {
+    display: flex;
+    margin-top: 20px;
+    /* box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px; */
+    height: 60px;
+}
+
+#submain>div:nth-child(2)>p {
+    margin: 0%;
+    margin-top: 5px;
+}
+
+#imgs {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    width: 30%;
+    height: 10px;
+    gap: 10px;
+    margin-left: 10px;
+}
+
+#imgs>div>img {
+    width: 40px;
+    height: 30px;
+}
+
+
+/* carddetails */
+
+
+
+#card_box {
+    /* box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px; */
+    width: 100%;
+    height: 100%;
+    padding: 8px;
+    font-family: "Clear Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    /* box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px; */
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+#card_box>div:first-child>h4 {
+    margin: 0%;
+    font-size: 17px;
+}
+
+#card_box:div:nth-child(2) {
+    margin-top: 10px;
+}
+
+#card_box>div:nth-child(2)>p {
+    font-size: 12px;
+    color: gray;
+}
+
+#card {
+    height: 250px;
+    margin-top: 35px;
+}
+
+#card label {
+    font-size: 13px;
+    color: gray;
+    margin-bottom: 10px;
+}
+
+#card input {
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    border: none;
+}
+
+#card_number {
+    display: block;
+    width: 100%;
+    height: 30px;
+    border: none;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    margin-top: 10px;
+}
+
+#exp_sec {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+#exp_sec>div>label {
+    display: block;
+}
+
+#exp_sec>div:first-child>div {
+    display: flex;
+}
+
+#exp_sec>div:first-child>div>p {
+    font-size: 30px;
+    margin: 0%;
+    margin-left: 5px;
+}
+
+#exp_sec>div:first-child>div>input {
+    width: 30px;
+    height: 30px;
+    margin-left: 5px;
+}
+
+#two_input {
+    display: flex;
+    width: 50px;
+    display: block;
+    margin-left: 10px;
+}
+
+#exp_sec>div:last-child>input {
+    height: 30px;
+}
+
+#card>div:nth-child(3) {
+    margin-top: 30px;
+}
+
+#card>div:nth-child(3)>input {
+    height: 30px;
+    width: 100%;
+    font-size: 16px;
+}
+
+#card_box>div:nth-child(4) {
+    margin-top: 10px;
+}
+
+#card_box>div:nth-child(4)>input {
+    width: 30px;
+    height: 30px;
+    border-radius: 3px;
+}
+
+#card_box>div:nth-child(5)>p {
+    margin: 0%;
+    line-height: 18px;
+    font-size: 12px;
+    color: gray;
+}
+
+#card_box>div:nth-child(6) {
+    margin-top: 20px;
+    display: flex;
+    justify-content: right;
+}
+
+#submit_pay {
+    border: none;
+    width: 130px;
+    height: 50px;
+    background-color: #ff6f61;
+    color: white;
+    font-weight: 300;
+    font-size: 13px;
+    border-radius: 10px;
+}
+
+#submit_pay:hover {
+    cursor: pointer;
+}
+
+#last_box {
+    margin-top: 60px;
+}
+
+#last_box>div>p {
+    margin: 0%;
+    font-size: 13px;
+    text-align: center;
+}
+
+#last_box>div:nth-child(2) {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    margin: auto;
+    width: 50%;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+#last_box>div:nth-child(2)>div {
+    height: 30px;
+}
+
+.logos {
+    width: 30px;
+    height: 30px;
+}
+
+
+/* ------------------ */
+
+   /* netbanking */
+    
+
+   #container11
+   {
+       display: grid;
+       grid-template-columns: repeat(2,1fr);
+       grid-template-rows: auto;
+       margin: auto;
+       height: 100%;
+       width: 100%;
+       /* border: 1px solid red; */
+       gap: 23px;
+       padding: 10px;
+   }
+   .container22
+   {
+       border: 1px solid #d0cece;
+       border-radius: 5px;
+       display: flex;
+       align-items: center;
+       cursor: pointer;
+       /* height: 70px; */
+   }
+
+   .container22>span
+   {
+       font-weight: 700;
+       color: #333;
+   }
+
+   /* --------------- */
+
+</style>
+<body>
+    <div id="mainnav">
+        <div class="btn">
+            <span class="fas fa-bars"></span>
+        </div>
+        <nav class="sidebar">
+            <div class="text"><img id="internimg" src="https://assets.interntheory.com/creative/logo.png" alt=""></div>
+            <ul>
+                <li>
+                    <a href="index.html">Home</a>
+                </li>
+                <li><a href="internship.html">Internships</a></li>
+                <li><a href="job.html">Jobs</a></li>
+                <li><a href="#">Post Internships</a></li>
+                <li>
+                    <a href="#" class="feat-btn">Courses
+                        <span class="fas fa-caret-down first"></span>
+                    </a>
+                    <ul class="feat-show">
+                        <li><a href="newonline_course.html">Online Courses</a></li>
+                        <li><a href="newoffline_course.html">Classroom Training</a></li>
+                    </ul>
+                </li>
+                <li><a href="contact.html">Contact Us</a></li>
+                <li>
+                    <a href="#" class="serv-btn">Login
+                        <span class="fas fa-caret-down second"></span>
+                    </a>
+                    <ul class="serv-show">
+                        <li><a href="#">Company</a></li>
+                        <li><a href="#">Student</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+        <div id="logo"><img id="internimg" src="https://assets.interntheory.com/creative/logo.png" alt=""></div>
+        <div id="iclass"><i class="fa fa-shopping-cart" style="font-size:36px"></i></div>
+        <div id="btn">
+            <input type="button"  id="sign" value="SIGN IN">
+        </div>
+    </div>
+
+
+    <div id="Cart_Details">
+        <div style="margin-bottom:40px;"><h2>Cart</h2></div>
+        <div id="content">
+
+            <!-- left side of the cart page -->
+            <div id="container">
+                <section></section>
+            </div>
+
+            <!-- wright side of the cart page -->
+            <div id="Price_details">
+                <div class="price">
+                    <div>Amount</div>
+                    <div id="amount"></div>
+                </div>
+                <div class="price">
+                    <div>CGST 9%</div>
+                    <div id="cgst"></div>
+                </div>
+                <div class="price">
+                    <div>SGST 9%</div>
+                    <div id="sgst"></div>
+                </div>
+                <div class="total">
+                    <div>Total:</div>
+                    <div id="Total_amount"></div>
+                </div>
+                <div id="coupon">
+                    <input type="text" style="margin-bottom: 10px;" id="couponinput" placeholder="Coupon Code">
+                    <button onclick="goooo()">GO</button>
+                </div>
+                <div id="checkout"><button onclick="openPopup()">CHECKOUT</button></div>
+                <div id="emi"><button>EMI Starting at ₹ 1259/month</button></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="popup">
+        <div style="margin-bottom: 20px;"><h2>Pay Via</h2></div>
+        <div id="payment_methode">
+            <div class="methods"><button onclick="openPopup2()">CREDIT CARD</button></div>
+            <div class="methods"><button onclick="openPopup2()">DEBIT CARD</button></div>
+            <div class="methods"><button onclick="openPopup2()">NETBANKING</button></div>
+            <div class="methods"><button onclick="openPopup2()">PAYTM</button></div>
+            <div class="methods"><button onclick="openPopup2()">UPI</button></div>
+            <div class="methods"><button onclick="openPopup2()">EMI (CREDITCARD)</button></div>
+        </div>
+    </div>
+
+    <div id="popup2">
+        <div id="description">
+            <h3>Intern Theory</h3>
+            <h5>Purchase Description</h5>
+            <div id="Final_price"></div>
+        </div>
+        <div>
+            <div><h4>PREFERRED PAYMENT METHOD</h4></div>
+        <div id="new">
+            <div id="">
+                <div class="methods2">
+                    <button onclick="UPI()">
+                        <i><img src="https://cdn.razorpay.com/checkout/phonepe.png" alt=""></i>
+                        <div>UPI - Phonepe</div>
+                        <div class="symbol">></div>
+                    </button>
+                </div>
+                <div class="methods2">
+                    <button onclick="UPI()">
+                        <i><img src="https://cdn.razorpay.com/checkout/googlepay.png" alt=""></i>
+                        <div>UPI-Google - pay</div>
+                        <div class="symbol">></div>
+                    </button>
+                </div>
+    
+            </div>
+            <div><h4>CARDS, UPI & MORE</h4></div>
+            <div id="payment_methode2">
+                <div class="methods2"><button onclick="card()"><h3>Card</h3> <p>Visa,Master Card</p></button></div>
+                <div class="methods2"><button onclick="UPI()">UPI/QR</button></div>
+                <div class="methods2"><button onclick="netbanking()">Netbanking</button></div>
+                <div class="methods2"><button onclick="wallet()">Wallet</button></div>
+                <div class="methods2"><button onclick="card()">EMI</button></div>
+                <div class="methods2"><button onclick="card()">Pay Later</button></div>
+            </div>
+        </div>
+    </div>
+        </div>
+    
+</body>
+</html>
+
+<script>
+    $('.btn').click(function(){
+        $(this).toggleClass('click')
+        $('.sidebar').toggleClass('show')
+    })
+    $('.feat-btn').click(function(){
+        $('nav ul .feat-show').toggleClass("show");
+        $('nav ul .first').toggleClass("rotate");
+    })
+    $('.serv-btn').click(function(){
+        $('nav ul .serv-show').toggleClass("show1");
+        $('nav ul .second').toggleClass("rotate");
+    })
+
+
+    var cart = JSON.parse(localStorage.getItem("cart")) || []
+console.log(cart)
+
+displayData(cart)
+
+function displayData(data){
+    document.querySelector("section").innerHTML=""
+      data.forEach(function(ele,index){
+        var container = document.createElement("div");
+
+        let span = document.createElement("span")
+        span.setAttribute("id","sign")
+        span.innerHTML = sign()
+        var image =document.createElement("img");
+        var name = document.createElement("h4");
+        var div1 = document.createElement("div")
+        div1.setAttribute("class","abc")
+        var price = document.createElement("p");
+        var discount = document.createElement("p");
+        let div2 = document.createElement("div")
+        div2.setAttribute("class","abc")
+
+        var button = document.createElement("button");
+        button.append(span)
+        
+        
+        image.setAttribute("src",ele.image);
+        name.textContent = ele.name;
+        price.innerText =ele.dicount;
+        discount.textContent ="₹"+ele.price
+        // button.textContent = "DELETE"
+        
+        div1.append(button,image,name)
+        div2.append(price,discount)
+
+    
+        button.addEventListener("click",function(){
+          deleteFromCart(index)
+          window.location.reload()
+        })
+    
+    
+    
+        container.append(div1,div2);
+    
+        document.querySelector("section").append(container)
+    
+    })
+}
+
+function deleteFromCart(index){
+    cart.splice(index,1)
+    localStorage.setItem("cart",JSON.stringify(cart))
+    displayData(cart)
+
+}
+
+let sum = 0
+for (let i=0; i<cart.length; i++)
+{
+    sum=sum+Number(cart[i].price)
+}
+let perc = Math.floor((9/100)*sum)
+document.querySelector("#amount").innerText=sum
+document.querySelector("#cgst").innerText=perc
+document.querySelector("#sgst").innerText=perc
+document.querySelector("#Total_amount").innerText="₹"+(sum+(2*perc))
+document.querySelector("#Final_price").innerText="₹"+(sum+(2*perc))
+
+
+function sign(){
+    return `<svg height="30" width="30">
+    <circle cx="15" cy="15" r="10" stroke-width="3" fill="red" />
+        <line x1="9" y1="9" x2="21" y2="21" style="stroke:white;stroke-width:3" />
+    <line x1="21" y1="9" x2="9" y2="22" style="stroke:white
+    ;stroke-width:3" />
+
+</svg>`
+}
+
+function goooo(){
+    if(document.querySelector("#couponinput").value=="masai30")
+    {
+        alert("Code Applied Successfully")
+    }
+}
+
+
+// pop of functionality
+
+let popup = document.getElementById("popup")
+let popup2 = document.getElementById("popup2")
+
+
+
+function openPopup(){
+    document.querySelector("#Cart_Details").style.opacity="0.5"
+    popup.classList.add("open_popup")
+    popup.style.visibility="visible"
+    // document.querySelector("Cart_Details").style.opacity="0.5"
+}
+
+function openPopup2(){
+    popup.style.visibility="hidden"
+    popup2.classList.add("open_popup2")
+    popup2.style.visibility="visible"
+}
+
+function UPI(){
+    document.getElementById("new").innerHTML = `<div id="submain">
+    <div>
+        <h3>Transfer money from your bank account using your UPI app</h3>
+    </div>
+    <div>
+        <p>We accept</p>
+        <div id="imgs">
+            <div><img src="https://res.cloudinary.com/du8msdgbj/image/upload/q_auto,f_auto/v1581595473/marketing/pusi6g59xoxcyevsihmm.png" alt=""></div>
+            <div><img src="https://res.cloudinary.com/du8msdgbj/image/upload/q_auto,f_auto/v1581595522/marketing/uwfgfsxaq3i9m9aglqsc.png" alt=""></div>
+            <div><img src="https://res.cloudinary.com/du8msdgbj/image/upload/q_auto,f_auto/v1581595567/marketing/i0yoaxd0mbcc9jdzyjrq.png" alt=""></div>
+            <div><img src="https://res.cloudinary.com/du8msdgbj/image/upload/q_auto,f_auto,w_107,h_57/v1581508161/marketing/zhcu7wuhtxelq710o4bc.jpg" alt=""></div>
+        </div>
+    </div><hr>
+    <div id="thirdchild">
+        <div>
+            <h3>Saved UPI ID</h3>
+        </div>
+        <div>
+            <p>Pay via new UPI ID</p>
+        </div>
+        <div id="input"><input type="tel" placeholder="Exmobilenumber@upi">
+            <p>The UPI ID is in the format of name/phone number@bankname</p>
+        </div>
+    </div>
+    <div id="fourthchild">
+        <input type="checkbox" id="checkbox">
+        <p>Securely save this VPA for faster checkout next time</p>
+    </div>
+    <div id="submitdiv">
+        <input type="submit" id="submit" onclick="submit()" value="Verify & Pay">
+    </div>
+
+</div>`
+}
+function card(){
+    document.querySelector("#new").innerHTML=`<div id="card_box">
+        <div>
+            <h4>Credit & Debit Cards</h4>
+        </div>
+        <div>
+            <p>Add New Card For Payment</p>
+        </div>
+        <div id="card">
+            <div>
+                <label for="card_number">Card Number</label>
+                <input type="tel" name="card_number" id="card_number" placeholder="XXXX XXXX XXXX XXXX">
+            </div>
+            <div id="exp_sec">
+                <div>
+                    <label for="mon">Expiry Date (MM/YY)</label>
+                    <div id="two_input">
+                        <input type="tel" id="mon" placeholder="MM">
+                        <p>/</p>
+                        <input type="tel" id="year" placeholder="YY">
+                    </div>
+                </div>
+                <div>
+                    <label for="cvv">Security Code</label>
+                    <input type="tel" id="cvv" placeholder="CVV">
+                </div>
+            </div>
+            <div>
+                <input type="text" id="user_name" placeholder="Name on the card">
+            </div>
+        </div>
+        <div>
+            <input type="checkbox" id="check">
+        </div>
+        <div>
+            <p>Your card details will be saved securely for future transactions, based on the industry standards.</p>
+        </div>
+        <div>
+            <input type="submit" id="submit_pay" onclick="submit()" value="MAKE PAYMENT">
+        </div>
+        <div id="last_box">
+            <div>
+                <p>We support domestic credit and debit cards of following brands
+                </p>
+            </div>
+            <div>
+                <div><img src="https://res.cloudinary.com/du8msdgbj/image/upload/q_auto,f_auto/v1530098811/marketing/szfylmvspyj5ccvhesnp.png" class="logos" alt=""></div>
+                <div><img src="https://res.cloudinary.com/du8msdgbj/image/upload/q_auto,f_auto/v1532957968/marketing/j9kc0uquxwrcbyoeomfw.png" class="logos" alt=""></div>
+                <div><img src="https://res.cloudinary.com/du8msdgbj/image/upload/q_auto,f_auto/v1530098792/marketing/vujtyvkwxchd16egv0wt.png" class="logos" alt=""></div>
+                <div><img src="https://res.cloudinary.com/du8msdgbj/image/upload/q_auto,f_auto/v1530098898/marketing/rv6lj5fubobesvsomlzr.png" class="logos" alt=""></div>
+            </div>
+        </div>
+    </div>`
+}
+
+function netbanking(){
+    document.querySelector("#Cart_Details").style.opacity="0.5"
+    document.querySelector("#new").innerHTML=`<div id="container11">
+        <div class="container22">
+            <img src="https://res.cloudinary.com/du8msdgbj/image/upload/v1529400450/marketing/tp4al0qn9nery25pwcjh.png" alt="">
+            <span>ICICI</span>
+        </div>
+        <div class="container22">
+            <img src="	https://res.cloudinary.com/du8msdgbj/image/upload/v1529400478/marketing/k5ezmynfhvzorhfcbzks.png" alt="">
+            <span>HDFC</span>
+        </div>
+        <div class="container22">
+            <img src="	https://res.cloudinary.com/du8msdgbj/image/upload/v1529400496/marketing/p1pmddrmfgus2qiuznm1.png" alt="">
+            <span>AXIS</span>
+        </div>
+        <div class="container22">
+            <img src="https://res.cloudinary.com/du8msdgbj/image/upload/v1529400513/marketing/e07ooqn2k3czd3m6tmfk.png" alt="">
+            <span>KOTAK</span>
+        </div>
+        <div class="container22">
+            <img src="https://res.cloudinary.com/du8msdgbj/image/upload/v1529400415/marketing/xw86fht2ekdg7rx4fbqq.png" alt="">
+            <span>SBI</span>
+        </div>
+    </div>`
+
+}
+
+function wallet(){
+    document.querySelector("#new").innerHTML = `<div class="container">
+        <div class="container2">
+            <img src="https://res.cloudinary.com/du8msdgbj/image/upload/q_auto,f_auto/v1532939475/marketing/jwodyz6rhzi7tardzxii.png" alt="paytmwallet">
+            <span>Paytm Postpaid | Wallet</span>
+        </div>
+        <p>Pay with Paytm Postpaid or Paytm wallet on Tata 1mg for ₹999 or more and get 4000 cashback points. Offer ends 31st May 2022.</p>
+    </div>
+    <div class="container">
+        <div class="container2">
+            <img src="https://res.cloudinary.com/du8msdgbj/image/upload/v1594272078/marketing/ahvfzsqhj9nlgzexicdf.png" alt="mobikwikwallet">
+            <span>Mobikwik</span>
+        </div>
+        <p>Pay with Mobikwik and get up to ₹500 cashback on allopathy medicines. Get assured cashback of ₹100. Minimum cart value for the offer is ₹1199. Offer ends 31st May 2022.</p>
+    </div>
+    <div class="container">
+        <div class="container2">
+            <img src="https://res.cloudinary.com/du8msdgbj/image/upload/v1612955877/marketing/q3zsbh4i3vgqa8ijcv0h.png" alt="Amazonpay">
+            <span>Amazon Pay</span>
+        </div>
+    </div>
+    <div class="container">
+        <div class="container2">
+            <img src="https://res.cloudinary.com/du8msdgbj/image/upload/q_auto,f_auto/v1530102837/marketing/l265joanpwafqbp165df.png" alt="Airtel">
+            <span>Airtel Payments Bank</span>
+        </div>
+        <p>Pay with Airtel Money and get 10% cashback upto ₹200 on a minimum transaction of ₹1000. Valid only for first-time users of Airtel Payments Bank till 31st May 2022.</p>
+    </div>
+    <div class="container">
+        <div class="container2">
+            <img src="https://res.cloudinary.com/du8msdgbj/image/upload/q_auto,f_auto/v1530102966/marketing/wstivvhhjrmqbrh5octm.png" alt="PhonePe">
+            <span>PhonePe</span>
+        </div>
+    </div>`
+}
+
+    function submit(){
+    
+        window.location.href="success.html"
+    }
+
+
+
+    let user = JSON.parse(localStorage.getItem("userdata"));
+
+if(user!=null)
+{
+  document.querySelector("#btn").innerHTML=`<a href="profile.html"><h2>Hi, ${user[0].firstname}</h2></a>`
+}
+else{
+  alert("Please Create an account first")
+  window.location.href="signupp.html";
+}
+var i=0
+
+
+
+</script>
